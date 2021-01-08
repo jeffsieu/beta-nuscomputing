@@ -91,7 +91,7 @@ const RecruitmentDetails = (props) => {
       <Box display='flex' flexDirection="row" mt={4}>
         <Spacer/>
           {props.team.people.map((person, index) =>
-            <Box key={index} display="flex" m="auto" flexDirection="column" justify='center' alignItems='center' ml={index == 0 ? 0 : 4}>
+            <Box key={index} display="flex" m="auto" flexDirection="column" justify='center' alignItems='center' ml={index === 0 ? 0 : 4}>
               <Avatar className={classes.large} alt={person.name} component={Img} fluid={props.team.query[person.name.replace(/ /g, '')].childImageSharp.fluid}/>
               <Box mt={1}>
                 <Typography variant='h6'>{person.name}</Typography>

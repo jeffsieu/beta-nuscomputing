@@ -458,7 +458,7 @@ function GuidesPage() {
       Listed below are guides, links to various platforms and FAQs which will be useful at different stages of your undergraduate life. Feel free to explore!
     </Typography>
     {guides.map((guide, index) =>
-      <Box mt={index != 0 ? 16 : 8} key={index}>
+      <Box mt={index !== 0 ? 16 : 8} key={index}>
         <Guide {...guide} headerSize='h4' padding='0'></Guide>
       </Box>
     )}

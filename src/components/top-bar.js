@@ -77,10 +77,10 @@ const navigationLinks = [
     title: 'About',
     link: '/about',
   },
-  // {
-  //   title: 'People',
-  //   link: '',
-  // },
+  {
+    title: 'People',
+    link: '/people',
+  },
   {
     title: 'Services',
     link: '/services',
@@ -88,10 +88,6 @@ const navigationLinks = [
   {
     title: 'Student Guides',
     link: '/guides',
-  },
-  {
-    title: 'IFG 2020',
-    link: '/ifg',
   },
   // {
   //   title: 'FOP',
