@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Card, CardContent, CardMedia, Typography } from '@material-ui/core';
 import Img from 'gatsby-image';
 
 
 export default function PersonCard(props) {
+  const [image, setImage] = useState(props.image);
   return (
-    <Card variant='outlined'>
+    <Card
+      variant='outlined'
+      onMouseOut={e => setImage(props.image)}
+      onMouseOver={e => setImage(props.imageFun)}
+      >
       <CardMedia
         title={`${props.name} (${props.role})`}>
-        <Img
-          fluid={props.image.fluid}>
+        <Img 
+          fluid={image}
+          onMouseOver={e => {e.currentTarget.fluid = props.imageFun}}
+          onMouseOut={e => (e.currentTarget.fluid = props.image)}
+          >
+
         </Img>
       </CardMedia>
       <CardContent>

@@ -132,7 +132,7 @@ function RecruitmentPage() {
         </Grid>
         {data.map((item) =>
           <Grid item xs={12} md={6} key={item.title}>
-            <OutlinedCard {...item} image={images[item.title.replace(' ', '')]}></OutlinedCard>
+            <OutlinedCard {...item} image={images[item.title.replace(/' '/g, '')]}></OutlinedCard>
           </Grid>
         )}
       </Grid>

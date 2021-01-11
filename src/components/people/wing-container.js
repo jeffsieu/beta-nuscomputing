@@ -1,9 +1,10 @@
-import React from 'react';
-import { Box, Typography, Card, CardContent, CardMedia, Grid, makeStyles } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Box, Typography, Card, CardContent, CardMedia, Divider, Grid, makeStyles } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import CellRow from './cell-row';
 import PersonCard from './person-card';
+import Img from 'gatsby-image';
 
 const useStyles = makeStyles({
   title: {
@@ -25,21 +26,32 @@ export default function WingContainer(props) {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('lg'));
 
-  const maxCharacters = 50;
+  const [image, setImage] = useState(props.image);
 
   const cardContents = (
     <div>
       <Box mb={6}>
-        <Typography variant="h3">
+        <Typography id={props.name} variant="h4">
           {props.name}
         </Typography>
       </Box>
-
+      <div
+        onMouseOut={e => setImage(props.image)}
+        onMouseOver={e => setImage(props.imageFun)}>
+        <Img fluid={image}></Img>
+      </div>
+      <Box mt={4}>
+        <Divider></Divider>
+      </Box>
+      <Box mt={8} mb={4}>
+        <Typography variant="h5">
+          Head
+        </Typography>
+      </Box>
       <Grid container
-        direction="column"
         alignItems="center"
         justify="center">
-        <Grid item xs={4}>
+        <Grid item sm={6} md={4} xs={12}>
           <PersonCard {...props.head}/>
         </Grid>
       </Grid>
@@ -54,12 +66,7 @@ export default function WingContainer(props) {
   if (isSmallScreen) {
     return cardContents;
   }
-  return <Card>
-    <CardMedia>
-      {/* <Img
-      fluid={query.bruh.childImageSharp.fluid}>
-      </Img> */}
-    </CardMedia>
+    return <Card>
     <CardContent className={classes.bigCardContent}>
       {cardContents}
     </CardContent>

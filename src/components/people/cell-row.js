@@ -5,7 +5,7 @@ import PersonCard from './person-card.js';
 export default function CellRow(props) {
   return (
     <div>
-      <Box mb={4}>
+      <Box mt={8} mb={4}>
         <Typography variant="h5">
           {props.name}
         </Typography>
