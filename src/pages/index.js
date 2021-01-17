@@ -1,15 +1,36 @@
 import React from 'react'
 import BaseContainer from '../components/base-container'
-import { Box, Button, Link, Typography, Divider } from '@material-ui/core'
-import { Link as GatsbyLink } from 'gatsby'
+import { Box, Button, Link, Typography, Divider, makeStyles } from '@material-ui/core'
+import { Link as GatsbyLink, useStaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image';
+
+const useStyles = makeStyles((theme) => ({
+  rounded: {
+    borderRadius: 16,
+  },
+}));
+
 
 function IndexPage() {
+  const classes = useStyles();
+  const image = useStaticQuery(graphql`
+  query {
+    banner: file(relativePath: { eq: "banner.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1500, maxHeight: 600) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+  `);
   return <BaseContainer title='Home'>
     <Box mb={8}>
       <Box mb={2}>
-        <Typography variant='h3'>We are recruiting! </Typography>
+        <Typography variant='h3'>Welcome to NUS Computing!</Typography>
       </Box>
-      <Typography variant='h6'>
+      <Img fluid={image.banner.childImageSharp.fluid} className={classes.rounded}></Img>
+      {/* <Typography variant='h6'>
         The <b>23rd Management Committee</b> is looking to recruit subcommittee
         members to serve the SoC community.
         <br/>
@@ -37,7 +58,7 @@ function IndexPage() {
         <Button variant='contained' color='secondary' component={ GatsbyLink } to='/recruitment'>
           Learn more
         </Button>
-      </Typography>
+      </Typography> */}
     </Box>
   
     <Divider/>

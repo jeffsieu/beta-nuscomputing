@@ -155,7 +155,7 @@ function TopBar(props) {
                 {navigationLinks.map(link => <Link key={link.title} href={link.link} target={link.newTab ? '_blank' : '_self'} rel={link.newTab ? 'noreferrer' : ''}>{link.title}</Link>)}
               </Typography>
             </Hidden>
-            <Button variant='contained' color='primary' component={GatsbyLink} to='/recruitment'>Recruitment</Button>
+            {/* <Button variant='contained' color='primary' component={GatsbyLink} to='/recruitment'>Recruitment</Button> */}
             <Hidden mdUp>
               <Box ml={1}>
                 <IconButton edge="end" color="primary" aria-label="menu" onClick={toggleDrawer('opened', true)}>
