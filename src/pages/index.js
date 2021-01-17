@@ -26,7 +26,7 @@ function IndexPage() {
   `);
   return <BaseContainer title='Home'>
     <Box mb={8}>
-      <Box mb={2}>
+      <Box mb={4}>
         <Typography variant='h3'>Welcome to NUS Computing!</Typography>
       </Box>
       <Img fluid={image.banner.childImageSharp.fluid} className={classes.rounded}></Img>
