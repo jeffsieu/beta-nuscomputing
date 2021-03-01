@@ -9,22 +9,17 @@ export default function PersonCard(props) {
     <Card
       variant='outlined'
       onMouseOut={e => setImage(props.image)}
-      onMouseOver={e => setImage(props.imageFun)}
-      >
+      onMouseOver={e => setImage(props.imageFun)}>
       <CardMedia
-        title={`${props.name} (${props.role})`}>
+        title={`${props.name} (${props.title})`}>
         <Img 
-          fluid={image}
-          onMouseOver={e => {e.currentTarget.fluid = props.imageFun}}
-          onMouseOut={e => (e.currentTarget.fluid = props.image)}
-          >
-
+          fluid={image}>
         </Img>
       </CardMedia>
       <CardContent>
         <Box mb={1}>
           <Typography variant="subtitle2" color="textSecondary">
-            {props.role}
+            {props.title}
           </Typography>
         </Box>
         <Typography variant="h6" component="h2">

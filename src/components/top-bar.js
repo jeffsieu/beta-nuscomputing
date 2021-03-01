@@ -12,7 +12,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import MenuIcon from '@material-ui/icons/Menu';
 import { useTheme } from '@material-ui/core/styles';
 
-import { Box, Drawer, List, IconButton, ListItem, Button, ListItemText, Hidden } from '@material-ui/core'
+import { Box, Drawer, List, IconButton, ListItem, ListItemText, Hidden } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,6 +20,11 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     background: 'white',
+  },
+  appBarTransparent: {
+    background: '#ffffffbb',
+    color: 'white',
+    backdropFilter: 'blur(10px)',
   },
   spacer: {
     flexGrow: 1,
@@ -89,11 +94,10 @@ const navigationLinks = [
     title: 'Student Guides',
     link: '/guides',
   },
-  // {
-  //   title: 'FOP',
-  //   link: 'https://freshmen.nuscomputing.com/',
-  //   newTab: true,
-  // },
+  {
+    title: 'FOP',
+    link: '/freshmen',
+  },
   {
     title: 'Photos/Media',
     link: 'https://www.flickr.com/photos/137141057@N04/albums/',
@@ -122,11 +126,12 @@ function TopBar(props) {
   return (
     <header>
       <ElevationScroll {...props}>
-        <AppBar className={classes.root}>
-          <Toolbar className={classes.appBar}>
+        <AppBar color='transparent'>
+          <Toolbar className={`${classes.root} ${classes.appBarTransparent}`}>
             <GatsbyLink to="/">
               <SmallLogo></SmallLogo>
             </GatsbyLink>
+            {props.transparent}
             <div className={classes.spacer}>
               <Hidden mdDown>
                 <Typography variant='h6' className={classes.computingClub}>
@@ -151,7 +156,7 @@ function TopBar(props) {
               </Hidden>
             </div>
             <Hidden smDown>
-              <Typography style={{ color: 'white' }} className={classes.links}>
+              <Typography style={{ color:'white' }} className={classes.links}>
                 {navigationLinks.map(link => <Link key={link.title} href={link.link} target={link.newTab ? '_blank' : '_self'} rel={link.newTab ? 'noreferrer' : ''}>{link.title}</Link>)}
               </Typography>
             </Hidden>

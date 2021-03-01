@@ -5,6 +5,7 @@ import SEO from './seo'
 import TopBar from './top-bar'
 import Footer from './footer'
 import { Box, Container, Toolbar, useMediaQuery } from '@material-ui/core'
+import Img from 'gatsby-image'
 
 const theme = createMuiTheme({
   palette: {
@@ -54,13 +55,24 @@ function InnerContainer(props){
 function BaseContainer(props) {
   return <MuiThemeProvider theme = { theme }>
     <SEO {...props} />
-    <TopBar/>
+    <TopBar transparent={props.background != null}/>
     <Toolbar/>
+      {
+        props.background ?
+          <Img
+            style={{marginTop: '-68px', maxHeight: '75vh'}}
+            imgStyle={{objectFit: 'cover', objectPosition: props.backgroundPosition ?? '0% 50%'}}
+            fluid={props.background.childImageSharp.fluid}>
+          </Img>
+        : null
+      }
     <Box py={8}>
       {
         props.disableWrapper
           ? props.children
           : <InnerContainer>
+            {/* {props.background} */}
+            {/* {JSON.stringify(props)} */}
               {props.children}
             </InnerContainer>
       }

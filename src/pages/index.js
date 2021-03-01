@@ -1,6 +1,6 @@
 import React from 'react'
 import BaseContainer from '../components/base-container'
-import { Box, Button, Link, Typography, Divider, makeStyles } from '@material-ui/core'
+import { Box, Link, Typography, Divider, makeStyles } from '@material-ui/core'
 import { Link as GatsbyLink, useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image';
 

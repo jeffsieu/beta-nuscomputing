@@ -1,0 +1,22 @@
+title: School of Computing FOP 2020
+subtitle: Excited to start university life at the School of Computing? Or do you simply want to make some friends and have fun?
+content:
+  Kickstart your journey in the School of Computing with our very own Freshman Orientation Programmes!
+  With an exciting lineup of events during the summer, from (hybrid) camps to RAG parformances to a social night,
+  you will be sure to get a summer's worth of fun with us!
+  So come join us and make everlasting friendships with fellow freshmen and seniors alike this summer!
+# timeline will be auto-generated from event yamls found in FOP Website/events/<camp>.yaml
+faq:
+  - title: When will I receive confirmation?
+    answer: Emails will be sent out to accepted applicants at least one week before the event.
+  - title: When will I receive details of the event?
+    answer: You can look forward to receiving an email regarding the details
+          of the event (e.g. schedule) at least one week before the event!
+  - title: Is there a deadline for registration?
+    answer: There is no deadline for registration.
+        Registration for the limited slots is primarily based on a first-come-first-serve
+        basis so make sure to register as soon as possible!
+  - title: What is E-FOP like?
+    answer: E-FOP is a day-filled event with an exciting line-up of activities planned out for you to build long-lasting friendships with your peers and seniors, as well as to help you integrate well into the School of Computing community.
+  - title: Who can I reach out to for enquiries?
+    answer: Contact us via instagram @socfop or send an email to fopenquiries@nuscomputing.com.

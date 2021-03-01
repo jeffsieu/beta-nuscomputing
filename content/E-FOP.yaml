@@ -1,0 +1,42 @@
+title: E-FOP
+name: Ad Meliora
+path: e-fop
+banner_image: banner.jpg
+banner_position: 0% 50%
+start_date: 2021-07-15
+end_date: 2021-07-16
+content:
+  Wondering what is the best way to make friends in school?
+  How about plan a heist with them?
+  Join us this summer for our E-Freshman Orientation Programme as we place you in your very own rag-tag team of freshies
+  Overcome obstacles to obtain the prized possession of NUS’s very own SOC.
+  Led by your very own ‘professor’, get ready to work your brains as you work together to break in.
+  However, the real question is if you can get out....
+committee:
+  directors:
+    - title: Project Director
+      name: Ng Zi Xuan
+    - title: Vice Project Director
+      name: Lee Yi Kai
+  subcommittee:
+    Pro-Logs:
+      head:
+        title: Pro-Logs Head
+        name: Aakansha Narain
+      members:
+        - name: Yap Teng Chiong
+        - name: Le Ngoc Quynh Mai
+        - name: Tiew Wei Jian
+        - name: Chia Wen Ling
+        - name: Koh Rui Ling
+    Admin:
+      head:
+        title: Admin Head
+        name: Bryan Tee Pak Hong
+      members:
+        - name: Tan Yan Rong Amelia
+        - name: Lim Fang Ding
+    Publicity:
+      head:
+        title: Publicity Head
+        name: Koh Jia Xian

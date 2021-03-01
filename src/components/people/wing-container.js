@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, Card, CardContent, CardMedia, Divider, Grid, makeStyles } from '@material-ui/core';
+import { Box, Typography, Card, CardContent, Divider, Grid, makeStyles } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import CellRow from './cell-row';
@@ -36,8 +36,11 @@ export default function WingContainer(props) {
         </Typography>
       </Box>
       <div
+        role="button"
         onMouseOut={e => setImage(props.image)}
-        onMouseOver={e => setImage(props.imageFun)}>
+        onFocus={e => setImage(props.image)}
+        onMouseOver={e => setImage(props.imageFun)}
+        onBlur={e => setImage(props.imageFun)}>
         <Img fluid={image}></Img>
       </div>
       <Box mt={4}>

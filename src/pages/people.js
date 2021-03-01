@@ -1,125 +1,126 @@
 import React from 'react'
 import BaseContainer from '../components/base-container'
-import { Box, Divider, Link, Typography } from '@material-ui/core'
+import { Box, Divider, Grid, Link, Typography } from '@material-ui/core'
 import { useStaticQuery, graphql, Link as GatsbyLink } from 'gatsby';
 import WingContainer from '../components/people/wing-container'
+import Img from 'gatsby-image';
 
 const peopleArray = [
   {
     name: 'Lee Yat Bun',
-    role: 'President',
+    title: 'President',
   },
   {
     name: 'Chen Hsiao Ting',
-    role: 'Vice President of Student Development',
+    title: 'Vice President of Student Life',
   },
   {
     name: 'Yan Yushan',
-    role: 'Vice President of Student Development',
+    title: 'Vice President of Student Development',
   },
   {
     name: 'Loy Yoke Yue',
-    role: 'Vice President of Internal Relations',
+    title: 'Vice President of Internal Relations',
   },
   {
     name: 'Yin Ruoyan',
-    role: 'Vice President of External Relations',
+    title: 'Vice President of External Relations',
   },
   {
     name: 'Liu Xiaowen',
-    role: 'General Secretary',
+    title: 'General Secretary',
   },
   {
     name: 'Nicole Joseph',
-    role: 'Assistant General Secretary',
+    title: 'Assistant General Secretary',
   },
   {
     name: 'Chua Kai Jun',
-    role: 'Finance Secretary',
+    title: 'Finance Secretary',
   },
   {
     name: 'Ong Yi En',
-    role: 'Assistant Finance Secretary',
+    title: 'Assistant Finance Secretary',
   },
   {
     name: 'Jeff Sieu Yong',
-    role: 'IT Secretary',
+    title: 'IT Secretary',
   },
   {
     name: 'Xiang Qingyi',
-    role: 'Assistant IT Secretary',
+    title: 'Assistant IT Secretary',
   },
   {
     name: 'Raveen Prabhu',
-    role: 'Director of FOP',
+    title: 'Director of FOP',
   },
   {
     name: 'Lo Zhao Wei',
-    role: 'Deputy Director of FOP',
+    title: 'Deputy Director of FOP',
   },
   {
     name: 'Gu Geng',
-    role: 'Director of Student Relations',
+    title: 'Director of Student Relations',
   },
   {
     name: 'Koh Quan Wei Ivan',
-    role: 'Deputy Director of Student Relations',
+    title: 'Deputy Director of Student Relations',
   },
   {
     name: 'Tan Shi Min',
-    role: 'Director of Academic Liaison',
+    title: 'Director of Academic Liaison',
   },
   {
     name: 'Fang Junwei, Samuel',
-    role: 'Deputy Director of Academic Liaison',
+    title: 'Deputy Director of Academic Liaison',
   },
   {
     name: 'Kan Yu Xuan',
-    role: 'Director of Community Service',
+    title: 'Director of Community Service',
   },
   {
     name: 'Foo Zi Yi, Patricia',
-    role: 'Deputy Director of Community Service',
+    title: 'Deputy Director of Community Service',
   },
   {
     name: 'Ren Weilin',
-    role: 'Director of Welfare',
+    title: 'Director of Welfare',
   },
   {
     name: 'Fun Wen Yin',
-    role: 'Deputy Director of Welfare',
+    title: 'Deputy Director of Welfare',
   },
   {
     name: 'Renee Lee',
-    role: 'Director of Sports',
+    title: 'Director of Sports',
   },
   {
     name: 'Lim Yu Long',
-    role: 'Deputy Director of Sports',
+    title: 'Deputy Director of Sports',
   },
   {
     name: 'Lin Fangyuan',
-    role: 'Director of Publicity',
+    title: 'Director of Publicity',
   },
   {
     name: 'Koh Jia Xian',
-    role: 'Deputy Director of Publicity (Graphics & Content)',
+    title: 'Deputy Director of Publicity (Graphics & Content)',
   },
   {
     name: 'Lee Jing Yu, Jonathan',
-    role: 'Deputy Director of Publicity (Photo & Video)',
+    title: 'Deputy Director of Publicity (Photo & Video)',
   },
   {
     name: 'Tean Wei Jun',
-    role: 'Director of Marketing',
+    title: 'Director of Marketing',
   },
   {
     name: 'Oliver Gui Chin Wee',
-    role: 'Deputy Director of Marketing (Sponsorship)',
+    title: 'Deputy Director of Marketing (Sponsorship)',
   },
   {
     name: 'Malcolm Sng',
-    role: 'Deputy Director of Marketing (Merchandise)',
+    title: 'Deputy Director of Marketing (Merchandise)',
   },
 ];
 
@@ -306,18 +307,24 @@ function PeoplePage() {
       <Typography variant="h3">
         People
       </Typography>
+      <Typography variant="h4">
+        23rd Management Committee
+      </Typography>
     </Box>
-    <ul>
+    <Grid container spacing={4}>
       {
         props.wings.map((wing) =>
-          <li>
-            <Typography variant="subtitle1">
-              <Link component={GatsbyLink} href={`#${wing.name}`}>{wing.name}</Link>
-            </Typography>
-          </li>
+          <Grid item xs={12} md={6}>
+            <a aria-label={`Photo of ${wing.name}`} href={`#${wing.name}`}><Img fluid={wing.image} style={{borderRadius: '8px'}}/></a>
+            <Box mt={2}>
+              <Typography variant="subtitle1">
+                <Link component={GatsbyLink} href={`#${wing.name}`}>{wing.name}</Link>
+              </Typography>
+            </Box>
+          </Grid>
         )
       }
-    </ul>
+    </Grid>
     <Box mt={8} mb={4}>
       <Divider></Divider>
     </Box>

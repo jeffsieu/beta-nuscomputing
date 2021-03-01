@@ -1,0 +1,97 @@
+title: RAG
+name: COMRAG 2021
+path: rag
+banner_image: banner.jpg
+start_date: 2021-06-21
+end_date: 2021-08-07
+content:
+  Looking for a fun yet meaningful way to kickstart your life in NUS? Join SoC Receive-and-Give (RAG)! Forge new friendships and make memories this summer as we work hard to put together a performance for everyone to enjoy.
+committee:
+  directors:
+    - title: Project Director
+      name: Vernice Thiam
+    - title: Vice Project Director
+      name: Ruth Kang
+  subcommittee:
+    Creative Directors:
+      members:
+        # Title can be omitted - Then title will be taken as "Manpower Member", or rather "<name> Member"
+        - title: Creative Director
+          name: Hu Linglong
+        - title: Creative Director
+          name: Erin Ong
+        - title: Creative Director
+          name: Ye Pei Lin
+    Publicity:
+      members:
+        # Title can be omitted - Then title will be taken as "Manpower Member", or rather "<name> Member"
+        - title: Publicity Member
+          name: Brennan Lee
+        - title: Publicity Member
+          name: Noah Teo
+        - title: Publicity Member
+          name: Lim Xin Yi
+        - title: Publicity Member
+          name: Mai Youlian
+        - title: Publicity Member
+          name: Song Zhiqian
+        - title: Publicity Member
+          name: Leong Wen Ting
+    Floats:
+      members:
+        # Title can be omitted - Then title will be taken as "Manpower Member", or rather "<name> Member"
+        - title: Floats Engineer
+          name: Eliana Pang
+        - title: Floats Engineer
+          name: Emily Kok
+        - title: Floats Engineer
+          name: Denise Lam
+        - title: Floats Engineer
+          name: Siddanth
+        - title: Floats Engineer
+          name: Harmon Chew
+        - title: Floats Engineer
+          name: Tamago
+    Dance:
+      members:
+        # Title can be omitted - Then title will be taken as "Manpower Member", or rather "<name> Member"
+        - title: Dance Choreographer
+          name: Foo Jing Yi
+        - title: Dance Choreographer
+          name: Wang Qianyi
+        - title: Dance Choreographer
+          name: Shruthi Senthamaraiselvan
+        - title: Dance Choreographer
+          name: Rebecca Lau
+        - title: Dance Choreographer
+          name: Yin Ruoyan
+    Makeup and Costumes:
+      members:
+        # Title can be omitted - Then title will be taken as "Manpower Member", or rather "<name> Member"
+        - title: Makeup & Costumes Designer
+          name: Adelle Lim
+        - title: Makeup & Costumes Designer
+          name: Toh Zhiao Wei
+        - title: Makeup & Costumes Designer
+          name: Janice Chen
+        - title: Makeup & Costumes Designer
+          name: Huang Ching
+gallery:
+  - url: floats.jpg
+    caption:
+      Here, we construct props and floats from scratch for the backdrop of our performance.
+  - url: makeup.jpg
+    caption:
+      Get to paint or be painted in preparation for the performance!
+  - url: costumes.jpg
+    caption:
+      Try your hand at designing vibrant and creative costumes!
+  - url: dance.jpg
+    caption:
+      This is your opportunity to unleash your potential - no prior experience is required! Step out of your comfort zone to train, learn, perform alongside your friends!
+  - url: performance1.jpg
+    caption:
+      Join RAG to have one of the best experience of your NUS journey and make lasting memories together over the summer! 
+  - url: performance2.jpg
+    caption:
+      So what are you waiting for? If you are a freshmen or Year 2 looking to immerse yourself in a whole new experience, Sign up now to join COMRAG 2021! Let's embark on this journey together! 

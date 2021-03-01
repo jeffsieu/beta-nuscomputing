@@ -1,0 +1,66 @@
+title: SOC Social Night 2021
+name: Geek-On-Fleek
+path: social-night
+banner_image: banner.jpg
+banner_position: 0% 30%
+start_date: 2021-08-21
+end_date: 2021-08-21
+content:
+  Enjoy a night of fun before the school work hits! 
+  Come join us on a night of exciting performances and watch your friends blow your mind away at our Social Night 2021! 
+  Be sure to come and vote so you can be a part of the crowning of our SOC's King and Queen!
+committee:
+  directors:
+    - title: Project Director
+      name: Guan Xinyi
+    - title: Vice Project Director 
+      name: Arnav Gupta
+  subcommittee:
+    Programmes:
+      head:
+        title: Progs Head
+        name: Kashish Varshney
+      members:
+        - title: Progs Member
+          name: Ria Khaitan
+    Logistics:
+      head:
+        title: Logs Head
+        name: Vishnu Sundaresan
+      members:
+        - title: Logs Member
+          name: Amelia Chong
+        - title: Logs Member
+          name: Felix Halim
+    Admin:
+      head:
+        title: Admin Head 
+        name: Darren Hoon
+      members:
+        - title: Admin Member
+          name: David Limantara
+    Marketing:
+      head:
+        title: Marketing Head
+        name: Angel Koh Xue Qi
+      members:
+        - title: Marketing Member
+          name: Toh Bing Cheng
+        - title: Marketing Member
+          name: David Wang
+    Publicity:
+      head:
+        title: Publicity Head
+        name: Shen Jialu
+      members:
+        - title: Publicity Member
+          name: Alyssa Savier
+        - title: Publicity Member
+          name: Teng Kian En
+gallery:
+  - url: performance.jpg
+    caption:
+      Get ready to be amazed by the amazing performances and dances that your friends have prepared!
+  - url: friends.jpg
+    caption:
+      Hang out with your new found friends from camp and look forward to an unforgettable night!
