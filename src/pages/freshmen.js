@@ -94,7 +94,7 @@ function FreshmenPage() {
           </Typography>
         </Box>
         <iframe
-          src="http://lightwidget.com/widgets/6432297d5f1656eba2e7dd52ff7a9a17.html"
+          src="https://cdn.lightwidget.com/widgets/6432297d5f1656eba2e7dd52ff7a9a17.html"
           scrolling="no"
           allowtransparency="true"
           className="lightwidget-widget"
