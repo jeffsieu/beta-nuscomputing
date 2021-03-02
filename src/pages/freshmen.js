@@ -7,7 +7,7 @@ import FOP from '../../content/main/main_fop.yaml'
 import RAG from '../../content/RAG.yaml'
 import FSC from '../../content/FSC.yaml'
 import FOW from '../../content/FOW.yaml'
-import { Link as GatsbyLink } from 'gatsby'
+import { graphql, Link as GatsbyLink, useStaticQuery } from 'gatsby'
 
 function formatDate(date) {
     return new Date(date).toLocaleDateString('en-SG', {month: 'long', day: 'numeric'});
@@ -30,6 +30,21 @@ function getEventNameString(event) {
 }
 
 function FreshmenPage() {
+  const bannerImage = useStaticQuery(graphql`
+    query {
+      allFile(filter: {relativePath: {eq: "fopbanner.jpg"}}) {
+        edges {
+          node {
+            childImageSharp {
+              fluid(maxWidth: 2000) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }  
+  `).allFile.edges[0].node;
   var events = [
     FSC,
     RAG,
@@ -38,7 +53,7 @@ function FreshmenPage() {
     SocialNight
   ].sort((event1, event2) => new Date(event1.start_date) - new Date(event2.start_date));
 
-  return <BaseContainer title='Freshmen Orientation Camps'>
+  return <BaseContainer title='Freshmen Orientation Camps' background={bannerImage}>
       <Typography variant='h3'>
         {FOP.title}
       </Typography>
