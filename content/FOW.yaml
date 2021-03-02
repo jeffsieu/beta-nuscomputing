@@ -1,0 +1,75 @@
+title: Freshmen Orientation Week
+name: Incipio
+path: fow
+banner_image: fsc/banner.jpg
+start_date: 2021-07-21
+end_date: 2021-07-24
+content:
+  Hello Freshmen of Computing! In the near future of Kafkaesque reality, BigTech, a coalition of the most
+  powerful technology companies worldwide, is facing a problem - the lack of innovation and the rising
+  mortality rate is causing diseases among the intellectual elite. There's only one way to save BigTech
+   – a challenge only the bravest can pass. Designation? Incipio. Be warned, for secrets will be unfurled
+   as you progress through Incipio. Will you chance upon a shocking revelation that'll change the tide of this war?
+committee:
+  directors:
+    - title: Project Director
+      name: Chua Yuen Zheng, Roy
+    - title: Vice Project Director (Operations)
+      name: Abhishek Jain
+    - title: Vice Project Director (Admin)
+      name: Kaushik Rangaraj
+  subcommittee:
+    Manpower:
+      head:
+        title: Head of Manpower & Finance
+        name: Chiu Xi, Brandon
+      members:
+        - name: Nobel Ang
+        - name: Michelle Adeline
+        - name: Phua Guan Wei
+    Publicity:
+      members:
+        - name: Chu Jia Ming
+        - name: Lee Jing Yu, Jonathan
+        - name: Ren Weilin
+    programmes:
+      head:
+        title: Head of Programmes
+        name: Rishabh Anand
+      members:
+        - name: Dao Minh Hai
+        - name: Loh Wen Xin
+        - name: Chua Sue-Ann
+        - name: Lim Zhe Kai
+        - name: Kok Yu Xian
+        - name: Xiang Qingyi
+        - name: Bryan Ong Wei Xin
+        - name: Ng Wen Hao Dennis
+        - name: Chan Tse Ee
+        - name: Megan Wee Rui En
+        - name: Brendan Lim Yuen Chong
+    logistics:
+      head:
+        title: Head of Logistics
+        name: Xiong Jingya
+      members:
+        - name: Sophie Ng Bei En
+        - name: Madhan Selvapandian
+        - name: Koh Tze Kang
+gallery:
+  - url: littest.jpg
+    caption:
+      Come join us in the LITTEST camp of SOC!!!
+  - url: amazingrace.jpg
+    caption:
+      Travel across and outside NUS as you journey to save BigTech!
+  - url: activities.jpg
+    caption:
+      Take part in activities while making new friends!
+  - url: friendships.jpg
+    caption:
+      At the end of the camp, friendships are forged not only within the orientation groups
+      and house but also beyond!
+  - url: celebration.jpg
+    caption:
+      What are you waiting for? Join us now!

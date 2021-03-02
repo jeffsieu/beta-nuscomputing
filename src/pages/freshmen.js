@@ -5,10 +5,12 @@ import SocialNight from '../../content/SOC_Social_Night.yaml'
 import EFOP from '../../content/E-FOP.yaml'
 import FOP from '../../content/main/main_fop.yaml'
 import RAG from '../../content/RAG.yaml'
+import FSC from '../../content/FSC.yaml'
+import FOW from '../../content/FOW.yaml'
 import { Link } from 'gatsby'
 
 function formatDate(date) {
-    return new Date(date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'});
+    return new Date(date).toLocaleDateString('en-SG', {month: 'long', day: 'numeric'});
 }
 
 function getEventDateString(event) {
@@ -29,10 +31,13 @@ function getEventNameString(event) {
 
 function FreshmenPage() {
   var events = [
+    FSC,
     RAG,
     EFOP,
+    FOW,
     SocialNight
-  ]
+  ].sort((event1, event2) => new Date(event1.start_date) - new Date(event2.start_date));
+
   return <BaseContainer title='Freshmen Orientation Camps'>
       <Typography variant='h4'>
         {FOP.title}
@@ -53,18 +58,12 @@ function FreshmenPage() {
           <Card variant='outlined'>
             <CardContent>
               <List>
-                <ListItem>
-                  <ListItemText>
-                    June 14, 2021 - June 15 2021 - Valanyr (Freshmen Social Camp 2021)
-                  </ListItemText>
-                </ListItem>
                 {
                   events.map((event) =>
                     <ListItem component={Link} to={event.path}>
                       <ListItemText>
-                        {getEventDateString(event)} - <b>{getEventNameString(event)}</b>
+                        {getEventDateString(event)}: <b>{getEventNameString(event)}</b>
                       </ListItemText>
-          
                     </ListItem>
                 )}
               </List>
@@ -75,22 +74,26 @@ function FreshmenPage() {
       <iframe
       src="https://cdn.lightwidget.com/widgets/2dc5ee7fb15559229812e0469d4f070c.html"
       scrolling="no" allowtransparency="true"
-       class="lightwidget-widget"
+       className="lightwidget-widget"
        style={{width: '100%', border: '0px', overflow: 'hidden', height: '950px'}}></iframe>
-
-    <Box mt={8}>
-      <Typography variant='h4'>FAQs</Typography>
-      {FOP.faq.map((question) => {
-        return <Box mt={2}>
-          <Typography variant='h6'>
-            {question.title}
-          </Typography>
-          <Typography variant='body1'>
-            {question.answer}
-          </Typography>
+    {
+      FOP.faq ?
+        <Box mt={8}>
+          <Typography variant='h4'>FAQs</Typography>
+          {FOP.faq.map((question) => {
+            return <Box mt={2}>
+              <Typography variant='h6'>
+                {question.title}
+              </Typography>
+              <Typography variant='body1'>
+                {question.answer}
+              </Typography>
+            </Box>
+          })}
         </Box>
-      })}
-    </Box>
+        : null
+    }
+    
   </BaseContainer>;
 }
 

@@ -11,10 +11,7 @@ exports.createPages = ({ actions }) => {
   const { createPage } = actions
   fs.readdirSync('./content/').forEach(file => {
     if (file !== 'main') {
-      console.log(file);
       const yamlFile = yaml.load(fs.readFileSync('./content/' + file, 'utf-8'));
-      
-      console.log(yamlFile);
       createPage({
         path: '/freshmen/' + yamlFile.path,
         component: require.resolve("./src/templates/fop-template.js"),

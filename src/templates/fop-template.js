@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
   },
   rounded: {
     borderRadius: '8px',
+  },
+  multiline: {
+    whiteSpace: 'pre',
   }
 }));
 
@@ -37,11 +40,11 @@ function FopTemplate(props) {
 
   function PersonAvatar(person) {
     return <Box mt={2} style={{ display: 'flex', flexDirection: 'column' }} justifyContent='center' alignItems='center' >
-      <Avatar className={classes.large} alt={person.name} component={Img} fluid={images[person.name.replace(/ /g, '')]?.childImageSharp?.fluid ?? null} />
+      <Avatar className={classes.large} alt={person.name} component={Img} fluid={images[person.name.replace(/ |,/g, '')]?.childImageSharp?.fluid ?? null} />
       <Box mt={1}>
         <Typography variant='h6'>{person.name}</Typography>
       </Box>
-      <Typography variant='overline' style={{ lineHeight: '1', textAlign: 'center' }}>{person.title}</Typography>
+      <Typography className={classes.multiline} variant='overline' style={{ lineHeight: '1', textAlign: 'center' }}>{person.title}</Typography>
     </Box>
   }
 
@@ -123,9 +126,7 @@ function FopTemplate(props) {
     }
   }); 
 
-  console.log(gallery);
   const bannerImage = banners[event.banner_image];
-  console.log(banners);
   return <BaseContainer title={event.name} background={bannerImage} backgroundPosition={event.banner_position}>
     <Typography variant='h3'>{event.name}</Typography>
     <Box mt={-1}>
@@ -162,7 +163,7 @@ function FopTemplate(props) {
                   : <Typography variant='h6'
                   style={{
                     position: 'absolute',
-                    padding: '8px',
+                    padding: '8px 16px',
                     top: '16px',
                     right: leftAlign ? '25%' : '16px',
                     left: leftAlign ? '16px' : '25%',
@@ -207,7 +208,7 @@ function FopTemplate(props) {
             {name}
           </Typography>
           <Grid container spacing={0}>
-            {[...(subcommittee.head ? [subcommittee.head] : []), ...(subcommittee.members ?? [])].map((member) =>
+            {[...(subcommittee.head ? [subcommittee.head] : []), ...(subcommittee.members ?? []).sort((m1, m2) => m1.name.localeCompare(m2.name))].map((member) =>
             <Grid item xs={12} sm={6} md={4} xl={3} key={member.name}>
               <PersonAvatar {...member} title={member.title ?? `${name} Member`}></PersonAvatar>
             </Grid>
