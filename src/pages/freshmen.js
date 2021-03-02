@@ -1,13 +1,13 @@
 import React from 'react'
 import BaseContainer from '../components/base-container';
-import { Box, Card, CardContent, List, ListItem, ListItemText, Typography } from '@material-ui/core';
+import { Box, Card, CardContent, Link, List, ListItem, ListItemText, Typography } from '@material-ui/core';
 import SocialNight from '../../content/SOC_Social_Night.yaml'
 import EFOP from '../../content/E-FOP.yaml'
 import FOP from '../../content/main/main_fop.yaml'
 import RAG from '../../content/RAG.yaml'
 import FSC from '../../content/FSC.yaml'
 import FOW from '../../content/FOW.yaml'
-import { Link } from 'gatsby'
+import { Link as GatsbyLink } from 'gatsby'
 
 function formatDate(date) {
     return new Date(date).toLocaleDateString('en-SG', {month: 'long', day: 'numeric'});
@@ -39,7 +39,7 @@ function FreshmenPage() {
   ].sort((event1, event2) => new Date(event1.start_date) - new Date(event2.start_date));
 
   return <BaseContainer title='Freshmen Orientation Camps'>
-      <Typography variant='h4'>
+      <Typography variant='h3'>
         {FOP.title}
       </Typography>
       <Typography variant='h5'>
@@ -60,7 +60,7 @@ function FreshmenPage() {
               <List>
                 {
                   events.map((event) =>
-                    <ListItem component={Link} to={event.path}>
+                    <ListItem component={GatsbyLink} to={event.path}>
                       <ListItemText>
                         {getEventDateString(event)}: <b>{getEventNameString(event)}</b>
                       </ListItemText>
@@ -71,11 +71,20 @@ function FreshmenPage() {
           </Card>
         </Box>
       </Box>
-      <iframe
-      src="https://cdn.lightwidget.com/widgets/2dc5ee7fb15559229812e0469d4f070c.html"
-      scrolling="no" allowtransparency="true"
-       className="lightwidget-widget"
-       style={{width: '100%', border: '0px', overflow: 'hidden', height: '950px'}}></iframe>
+      <Box mt={8}>
+        <Box mb={2}>
+          <Typography variant='h4'>Instagram</Typography>
+          <Typography variant='h6'>
+             Check us out at <Link color='secondary' href='https://www.instagram.com/socfop/'>@socfop</Link>
+          </Typography>
+        </Box>
+        <iframe
+          src="http://lightwidget.com/widgets/6432297d5f1656eba2e7dd52ff7a9a17.html"
+          scrolling="no"
+          allowtransparency="true"
+          className="lightwidget-widget"
+          style={{width: '100%', border: '0', overflow: 'hidden', height: '950px'}}></iframe>
+      </Box>
     {
       FOP.faq ?
         <Box mt={8}>
@@ -93,7 +102,6 @@ function FreshmenPage() {
         </Box>
         : null
     }
-    
   </BaseContainer>;
 }
 

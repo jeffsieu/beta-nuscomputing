@@ -5,7 +5,9 @@ banner_image: banner.jpg
 start_date: 2021-06-21
 end_date: 2021-08-07
 content:
-  Looking for a fun yet meaningful way to kickstart your life in NUS? Join SoC Receive-and-Give (RAG)! Forge new friendships and make memories this summer as we work hard to put together a performance for everyone to enjoy.
+  - Looking for a fun yet meaningful way to kickstart your life in NUS?
+  - Join SoC Receive-and-Give (RAG)! Forge new friendships and make memories this summer
+    as we work hard to put together a performance for everyone to enjoy.
 committee:
   directors:
     - title: Project Director

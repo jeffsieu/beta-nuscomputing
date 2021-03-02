@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
   },
   appBarTransparent: {
     background: '#ffffffbb',
-    color: 'white',
     backdropFilter: 'blur(10px)',
   },
   spacer: {
@@ -50,6 +49,10 @@ const useStyles = makeStyles((theme) => ({
   },
   drawer: {
     minWidth: '256px',
+  },
+  drawerBackground: {
+    background: '#ffffffbb',
+    backdropFilter: 'blur(10px)',
   }
 }));
 
@@ -175,7 +178,7 @@ function TopBar(props) {
 
       {/* Drawer for mobile */}
       <React.Fragment>
-        <Drawer anchor='right' open={state['opened'] && mdDown} onClose={toggleDrawer('opened', false)}>
+        <Drawer classes={{ paper: classes.drawerBackground}} anchor='right' open={state['opened'] && mdDown} onClose={toggleDrawer('opened', false)}>
         <Box
             pt={4}
             className={classes.drawer}

@@ -5,11 +5,13 @@ banner_image: fsc/banner.jpg
 start_date: 2021-07-21
 end_date: 2021-07-24
 content:
-  Hello Freshmen of Computing! In the near future of Kafkaesque reality, BigTech, a coalition of the most
-  powerful technology companies worldwide, is facing a problem - the lack of innovation and the rising
-  mortality rate is causing diseases among the intellectual elite. There's only one way to save BigTech
-   – a challenge only the bravest can pass. Designation? Incipio. Be warned, for secrets will be unfurled
-   as you progress through Incipio. Will you chance upon a shocking revelation that'll change the tide of this war?
+  - Hello Freshmen of Computing!
+  - In the near future of Kafkaesque reality, BigTech, a coalition of the most
+    powerful technology companies worldwide, is facing a problem - the lack of innovation and the rising
+    mortality rate is causing diseases among the intellectual elite. There's only one way to save BigTech
+    – a challenge only the bravest can pass. Designation? Incipio. Be warned, for secrets will be unfurled
+    as you progress through Incipio.
+  - Will you chance upon a shocking revelation that'll change the tide of this war?
 committee:
   directors:
     - title: Project Director
@@ -32,7 +34,7 @@ committee:
         - name: Chu Jia Ming
         - name: Lee Jing Yu, Jonathan
         - name: Ren Weilin
-    programmes:
+    Programmes:
       head:
         title: Head of Programmes
         name: Rishabh Anand
@@ -48,7 +50,7 @@ committee:
         - name: Chan Tse Ee
         - name: Megan Wee Rui En
         - name: Brendan Lim Yuen Chong
-    logistics:
+    Logistics:
       head:
         title: Head of Logistics
         name: Xiong Jingya

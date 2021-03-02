@@ -1,8 +1,9 @@
 import React from 'react'
 import BaseContainer from '../components/base-container'
-import { Avatar, Box, Divider, Grid, Typography } from '@material-ui/core'
+import { Avatar, Box, Button, Divider, Grid, Typography } from '@material-ui/core'
+import ArrowBack from '@material-ui/icons/ArrowBack';
 import { makeStyles } from '@material-ui/core/styles';
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby'
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Img from 'gatsby-image'
@@ -96,7 +97,7 @@ function FopTemplate(props) {
   const images = {}, banners = {}, gallery = {};
   
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   imagesRaw.forEach(({ node }) => {
     images[node.name] = node;
   });
@@ -126,8 +127,21 @@ function FopTemplate(props) {
     }
   }); 
 
+  const BackButton = () =>
+  <Button
+    color="primary"
+    variant='outlined'
+    className={classes.button}
+    size="large"
+    component={GatsbyLink}
+    to='/freshmen'
+    startIcon={<ArrowBack />}>Back to main page
+  </Button>
   const bannerImage = banners[event.banner_image];
   return <BaseContainer title={event.name} background={bannerImage} backgroundPosition={event.banner_position}>
+    <Box mb={4}>
+      <BackButton></BackButton>
+    </Box>
     <Typography variant='h3'>{event.name}</Typography>
     <Box mt={-1}>
       <Typography variant='h5'>{event.title}
@@ -140,45 +154,50 @@ function FopTemplate(props) {
     </Box>
     <Box mt={6}>
       <Typography variant='body1'>
-        {event.content}
+        {event.content.map(paragraph => <div>{paragraph}<br></br><br></br></div>)}
       </Typography>
     </Box>
     {
       event.gallery ?
-        <Box mt={8}>
-          {
-            event.gallery.map((photo, index) => {
-              const leftAlign = index % 2 === 0;
-              return <Box mt={4} style={{position: 'relative'}}>
-                {/* Put on the left for even indices, right for odd indices */}
-                <Img className={classes.rounded} fluid={gallery[photo.url]?.childImageSharp?.fluid ?? null}></Img>
+        <div>
 
-                {/* Show this special text only for certain sizes */}
-                {
-                  isSmallScreen ? <Box mt={2}>
-                    <Typography>
-                      {photo.caption}
-                    </Typography>
-                  </Box>
-                  : <Typography variant='h6'
-                  style={{
-                    position: 'absolute',
-                    padding: '8px 16px',
-                    top: '16px',
-                    right: leftAlign ? '25%' : '16px',
-                    left: leftAlign ? '16px' : '25%',
-                    textAlign: leftAlign ? 'left' : 'right',
-                    background: '#ffffffbb',
-                    borderRadius: '4px',
-                    backdropFilter: 'blur(10px)'}}>
-                  {photo.caption}
-                </Typography>
-                }
-                
-              </Box>
-            })
-          }
-        </Box>
+          <Box mt={4}>
+            {
+              event.gallery.map((photo, index) => {
+                const leftAlign = index % 2 === 0;
+                return <Box mt={4} style={{position: 'relative'}}>
+                  {/* Put on the left for even indices, right for odd indices */}
+                  <Img className={classes.rounded} fluid={gallery[photo.url]?.childImageSharp?.fluid ?? null}></Img>
+
+                  {/* Show this special text only for certain sizes */}
+                  {
+                    isSmallScreen ? <Box mt={2}>
+                      <Typography>
+                        <b>{photo.caption}</b>
+                      </Typography>
+                    </Box>
+                    : <Typography variant='h6'
+                    style={{
+                      position: 'absolute',
+                      padding: '8px 16px',
+                      top: '16px',
+                      right: leftAlign ? '25%' : '16px',
+                      left: leftAlign ? '16px' : '25%',
+                      textAlign: leftAlign ? 'left' : 'right',
+                      background: '#ffffffbb',
+                      borderRadius: '4px',
+                      backdropFilter: 'blur(10px)'}}>
+                    {photo.caption}
+                  </Typography>
+                  }
+                </Box>
+              })
+            }
+          </Box>
+          <Box mt={4}>
+            <BackButton></BackButton>
+          </Box>
+        </div>
         : null
     }
     <Box mt={4}>
@@ -216,7 +235,9 @@ function FopTemplate(props) {
           </Grid>
         </Box>
       )}
-
+    </Box>
+    <Box mt={8}>
+      <BackButton></BackButton>
     </Box>
   </BaseContainer>;
 }

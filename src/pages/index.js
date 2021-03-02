@@ -78,7 +78,28 @@ function IndexPage() {
       <Typography variant='h6'>
         Check out our <Link color='secondary' component={ GatsbyLink } to='/guides'>Student Guides</Link> page to orientate yourself around some
         of the facilities and services NUS has to offer!
+        <br></br>
+        <br></br>
+        Also, if you are an incoming freshman, have a look at our&nbsp;
+        <Link color='secondary' component={ GatsbyLink } to='/fop'>Freshmen Orientation Projects</Link>&nbsp;
+        we have in store for you!
       </Typography>
+    </Box>
+    <Box mt={4}>
+      <Divider></Divider>
+    </Box>
+    <Box mt={8}>
+      <Box mb={4}>
+        <Typography variant='h3'>Instagram</Typography>
+        <Typography variant='h6'>
+           Check us out at <Link color='secondary' href='https://www.instagram.com/nuscomputingclub/'>@nuscomputingclub</Link>
+        </Typography>
+      </Box>
+      <iframe
+        src="https://cdn.lightwidget.com/widgets/2dc5ee7fb15559229812e0469d4f070c.html"
+        scrolling="no" allowtransparency="true"
+         className="lightwidget-widget"
+         style={{width: '100%', border: '0px', overflow: 'hidden', height: '950px'}}></iframe>
     </Box>
   
   </BaseContainer>;
