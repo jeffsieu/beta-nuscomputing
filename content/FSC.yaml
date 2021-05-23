@@ -5,6 +5,7 @@ banner_image: banner.jpg
 banner_position: 0% 30%
 start_date: 2021-06-14
 end_date: 2021-06-15
+cancelled: true
 content:
   - Long ago, the five races lived together in harmony.
     Then everything changed when Valentine attacked.

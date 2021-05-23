@@ -1,6 +1,7 @@
 import React from 'react'
 import BaseContainer from '../components/base-container'
 import { Avatar, Box, Button, Divider, Grid, Typography } from '@material-ui/core'
+import { Alert, AlertTitle } from '@material-ui/lab'
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import { makeStyles } from '@material-ui/core/styles';
 import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby'
@@ -147,10 +148,18 @@ function FopTemplate(props) {
       <Typography variant='h5'>{event.title}
       </Typography>
     </Box>
-    <Box mt={2}>
-      <Typography variant='h6' color='primary'>
-        {getEventDateString(event)}
-      </Typography>
+    <Box mt={2} mb={4}>
+    {
+      event.cancelled ? 
+        <Alert severity="error">
+          <AlertTitle><strong>Updates: COVID Restrictions</strong></AlertTitle>
+            This event has been cancelled due to tightened COVID-19 measures.
+        </Alert>
+          :
+        <Typography variant='h6' color='primary'>
+          {getEventDateString(event)}
+        </Typography>
+    }
     </Box>
     <Box mt={6}>
       <Typography variant='body1'>

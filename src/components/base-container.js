@@ -1,5 +1,6 @@
 import React from 'react'
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import createBreakpoints from '@material-ui/core/styles/createBreakpoints'
 
 import SEO from './seo'
 import TopBar from './top-bar'
@@ -36,7 +37,7 @@ const theme = createMuiTheme({
       ].join(','),
     },
   },
-  breakpoints: {
+  breakpoints: createBreakpoints({
     values: {
       xs: 0,
       sm: 600,
@@ -44,7 +45,7 @@ const theme = createMuiTheme({
       lg: 1350,
       xl: 1920,
     },
-  },
+  }),
 });
 
 function InnerContainer(props){
@@ -53,7 +54,7 @@ function InnerContainer(props){
 }
 
 function BaseContainer(props) {
-  return <MuiThemeProvider theme = { theme }>
+  return <ThemeProvider theme = { theme }>
     <SEO {...props} />
     <TopBar transparent={props.background != null}/>
     <Toolbar/>
@@ -78,7 +79,7 @@ function BaseContainer(props) {
       }
     </Box>
     <Footer/>
-  </MuiThemeProvider>;
+  </ThemeProvider>;
 }
 
 export { BaseContainer as default, InnerContainer }

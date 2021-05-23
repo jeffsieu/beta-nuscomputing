@@ -26,7 +26,7 @@ const Copyright = () =>
     Page designed by <Link target='_blank' rel="noreferrer" href='https://github.com/jeffsieu' style={{color: 'white', fontWeight: 'bold'}}>Jeff Sieu</Link>
   </Typography>;
 
-const Footer = ({ siteTitle }) => {
+const Footer = () => {
   const classes = useStyles();
   const theme = useTheme();
   const lg = useMediaQuery(theme.breakpoints.only('lg'));
