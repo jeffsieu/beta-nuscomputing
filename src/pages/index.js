@@ -104,8 +104,12 @@ export default function() {
             </a>
           </Box>
           <Box mt={2} mb={4}>
-            <Alert severity="error">
-              <AlertTitle><strong>Updates: COVID Restrictions</strong></AlertTitle>
+            <Alert severity='success'>
+              <AlertTitle><strong>Updates: FOP sign ups are open!</strong></AlertTitle>
+              Sign up for various events and check out other useful links at <Link href='https://linktr.ee/socfop'>https://linktr.ee/socfop</Link>!
+            </Alert>
+            <Alert severity='warning'>
+              <AlertTitle><strong>COVID Restrictions</strong></AlertTitle>
               In consultation with NUSSU, all face-to-face activities for FOP happening between <u>1 June to 4 July</u> will be suspended.
               <br/>
               Further updates will be provided for face-to-face activities for FOP happening between 5 July to 31 July.

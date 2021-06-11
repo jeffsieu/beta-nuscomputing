@@ -4,6 +4,7 @@ path: fow
 banner_image: fsc/banner.jpg
 start_date: 2021-07-21
 end_date: 2021-07-24
+signup_end_date: 2021-07-07
 content:
   - Hello Freshmen of Computing!
   - In the near future of Kafkaesque reality, BigTech, a coalition of the most

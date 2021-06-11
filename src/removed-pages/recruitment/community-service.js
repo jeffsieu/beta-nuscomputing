@@ -19,7 +19,7 @@ const CommunityService = () => {
       ],
       query: useStaticQuery(graphql`
         query {
-          KanYuXuan: file(relativePath: { eq: "kanyuxuan.png" }) {
+          KanYuXuan: file(relativePath: { eq: "kanyuxuan.jpg" }) {
             childImageSharp {
               fluid(maxWidth: 400, maxHeight: 250) {
                 ...GatsbyImageSharpFluid

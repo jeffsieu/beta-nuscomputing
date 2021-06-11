@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby'
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import Img from 'gatsby-image'
+import Img from 'gatsby-image';
 
 const useStyles = makeStyles((theme) => ({
   large: {
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function formatDate(date) {
-  return new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  return new Date(date).toLocaleDateString('en-SG', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
 function getEventDateString(event) {
@@ -135,7 +135,7 @@ function FopTemplate(props) {
     className={classes.button}
     size="large"
     component={GatsbyLink}
-    to='/freshmen'
+    to='/freshmen/#timeline'
     startIcon={<ArrowBack />}>Back to main page
   </Button>
   const bannerImage = banners[event.banner_image];
