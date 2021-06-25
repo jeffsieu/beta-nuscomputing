@@ -21,8 +21,8 @@ jobs:
       with:
         node-version: '14'
     
-    - name: Install NPM packages
-      run: npm ci
+    - name: Install NPM packages with yarn
+      run: yarn install --frozen-lockfile
     
     - name: Build project
       run: npm run build
