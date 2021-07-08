@@ -17,24 +17,19 @@ const CommunityService = () => {
           position: 'Deputy Director',
         },
       ],
-      query: useStaticQuery(graphql`
-        query {
-          KanYuXuan: file(relativePath: { eq: "kanyuxuan.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 400, maxHeight: 250) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-          PatriciaFoo: file(relativePath: { eq: "patriciafoo.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 400, maxHeight: 250) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      `),
+      query: useStaticQuery(graphql`{
+  KanYuXuan: file(relativePath: {eq: "kanyuxuan.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 400, height: 250, layout: CONSTRAINED)
+    }
+  }
+  PatriciaFoo: file(relativePath: {eq: "patriciafoo.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 400, height: 250, layout: CONSTRAINED)
+    }
+  }
+}
+`),
     },
     sections: [
       {

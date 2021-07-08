@@ -17,24 +17,19 @@ const AcademicLiaison = () => {
           position: 'Deputy Director',
         },
       ],
-      query: useStaticQuery(graphql`
-        query {
-          TanShimin: file(relativePath: { eq: "shimin.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 400, maxHeight: 500) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-          SamuelFang: file(relativePath: { eq: "samuelfang.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 400, maxHeight: 400) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      `),
+      query: useStaticQuery(graphql`{
+  TanShimin: file(relativePath: {eq: "shimin.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 400, height: 500, layout: CONSTRAINED)
+    }
+  }
+  SamuelFang: file(relativePath: {eq: "samuelfang.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 400, height: 400, layout: CONSTRAINED)
+    }
+  }
+}
+`),
     },
     sections: [
       {

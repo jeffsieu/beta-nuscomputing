@@ -6,7 +6,7 @@ import SEO from './seo'
 import TopBar from './top-bar'
 import Footer from './footer'
 import { Box, Container, Toolbar, useMediaQuery } from '@material-ui/core'
-import Img from 'gatsby-image'
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const theme = createMuiTheme({
   palette: {
@@ -54,32 +54,33 @@ function InnerContainer(props){
 }
 
 function BaseContainer(props) {
-  return <ThemeProvider theme = { theme }>
-    <SEO {...props} />
-    <TopBar transparent={props.background != null}/>
-    <Toolbar/>
-      {
-        props.background ?
-          <Img
-            style={{marginTop: '-68px', maxHeight: '75vh'}}
-            imgStyle={{objectFit: 'cover', objectPosition: props.backgroundPosition ?? '0% 50%'}}
-            fluid={props.background.childImageSharp.fluid}>
-          </Img>
-        : null
-      }
-    <Box py={8}>
-      {
-        props.disableWrapper
-          ? props.children
-          : <InnerContainer>
-            {/* {props.background} */}
-            {/* {JSON.stringify(props)} */}
-              {props.children}
-            </InnerContainer>
-      }
-    </Box>
-    <Footer/>
-  </ThemeProvider>;
+  return (
+    <ThemeProvider theme = { theme }>
+      <SEO {...props} />
+      <TopBar transparent={props.background != null}/>
+      <Toolbar/>
+        {
+          props.background ?
+            <GatsbyImage
+              image={getImage(props.background)}
+              style={{marginTop: '-68px', maxHeight: '75vh'}}
+              imgStyle={{objectFit: 'cover', objectPosition: props.backgroundPosition ?? '0% 50%'}} />
+          : null
+        }
+      <Box py={8}>
+        {
+          props.disableWrapper
+            ? props.children
+            : <InnerContainer>
+              {/* {props.background} */}
+              {/* {JSON.stringify(props)} */}
+                {props.children}
+              </InnerContainer>
+        }
+      </Box>
+      <Footer/>
+    </ThemeProvider>
+  );
 }
 
 export { BaseContainer as default, InnerContainer }

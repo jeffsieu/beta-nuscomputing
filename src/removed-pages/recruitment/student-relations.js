@@ -17,24 +17,19 @@ const StudentRelations = () => {
           position: 'Deputy Director',
         },
       ],
-      query: useStaticQuery(graphql`
-        query {
-          GuGeng: file(relativePath: { eq: "gugeng.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 400, maxHeight: 250) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-          IvanKoh: file(relativePath: { eq: "ivankoh.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 400, maxHeight: 250) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      `),
+      query: useStaticQuery(graphql`{
+  GuGeng: file(relativePath: {eq: "gugeng.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 400, height: 250, layout: CONSTRAINED)
+    }
+  }
+  IvanKoh: file(relativePath: {eq: "ivankoh.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 400, height: 250, layout: CONSTRAINED)
+    }
+  }
+}
+`),
     },
     sections: [
       {

@@ -187,7 +187,7 @@ function GuidesPage() {
           content: <div>
             <GuideLink href='https://myedurec.nus.edu.sg/'>
               Education Records System (EduRec)
-            </GuideLink> is a platform for the platform where you access and settle all your administrative matters. You can view your exam schedule and results, view your transcript, apply to map your SEP modules, etc. You would also be able to change your credit debit (where NUS puts and deducts money respectively) bank account details. Click on ‘Academics’ or ‘Financials’ to access these features. ModReg@EduRec is the University’s consolidated module registration platform for all NUS students. It is used for module registration and selection of tutorial/lab slots. Selection of Modules and tutorial/lab slots would only be available during module registration (Academics -> Module Registration).
+            </GuideLink> is a platform for the platform where you access and settle all your administrative matters. You can view your exam schedule and results, view your transcript, apply to map your SEP modules, etc. You would also be able to change your credit debit (where NUS puts and deducts money respectively) bank account details. Click on ‘Academics’ or ‘Financials’ to access these features. ModReg@EduRec is the University’s consolidated module registration platform for all NUS students. It is used for module registration and selection of tutorial/lab slots. Selection of Modules and tutorial/lab slots would only be available during module registration (Academics -&gt; Module Registration).
           </div>,
         },
         {

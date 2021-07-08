@@ -102,6 +102,10 @@ const navigationLinks = [
     link: '/freshmen',
   },
   {
+    title: 'IFG',
+    link: '/ifg-recruitment',
+  },
+  {
     title: 'Photos/Media',
     link: 'https://www.flickr.com/photos/137141057@N04/albums/',
     newTab: true,

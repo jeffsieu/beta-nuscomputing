@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Card, CardContent, CardMedia, Typography } from '@material-ui/core';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 
 
 export default function PersonCard(props) {
@@ -12,9 +12,7 @@ export default function PersonCard(props) {
       onMouseOver={e => setImage(props.imageFun)}>
       <CardMedia
         title={`${props.name} (${props.title})`}>
-        <Img 
-          fluid={image}>
-        </Img>
+        <GatsbyImage image={image} />
       </CardMedia>
       <CardContent>
         <Box mb={1}>

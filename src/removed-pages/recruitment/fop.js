@@ -17,24 +17,19 @@ const FOP = () => {
           position: 'Deputy Director',
         },
       ],
-      query: useStaticQuery(graphql`
-        query {
-          RaveenPrabhu: file(relativePath: { eq: "raveen.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 400, maxHeight: 250) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-          LoZhaoWei: file(relativePath: { eq: "zhaowei.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 400, maxHeight: 250) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      `),
+      query: useStaticQuery(graphql`{
+  RaveenPrabhu: file(relativePath: {eq: "raveen.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 400, height: 250, layout: CONSTRAINED)
+    }
+  }
+  LoZhaoWei: file(relativePath: {eq: "zhaowei.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 400, height: 250, layout: CONSTRAINED)
+    }
+  }
+}
+`),
     },
     sections: [
       {

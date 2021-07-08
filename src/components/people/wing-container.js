@@ -4,7 +4,7 @@ import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import CellRow from './cell-row';
 import PersonCard from './person-card';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const useStyles = makeStyles({
   title: {
@@ -41,7 +41,7 @@ export default function WingContainer(props) {
         onFocus={e => setImage(props.image)}
         onMouseOver={e => setImage(props.imageFun)}
         onBlur={e => setImage(props.imageFun)}>
-        <Img fluid={image}></Img>
+        <GatsbyImage image={image} />
       </div>
       <Box mt={4}>
         <Divider></Divider>

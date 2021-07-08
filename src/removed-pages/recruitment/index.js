@@ -50,93 +50,78 @@ const data = [
 
 
 function RecruitmentPage() {
-  const images = useStaticQuery(graphql`
-      query {
-        Sports: file(relativePath: { eq: "sports.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        FOP: file(relativePath: { eq: "fop.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        CommunityService: file(relativePath: { eq: "communityservice.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        AcademicLiaison: file(relativePath: { eq: "academicliaison.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        Marketing: file(relativePath: { eq: "marketing.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        Publicity: file(relativePath: { eq: "publicity.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        StudentRelations: file(relativePath: { eq: "studentrelations.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        Welfare: file(relativePath: { eq: "welfare.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    `)
-  return <BaseContainer title='23rd MC Subcommittee Recruitment'>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Box mt={4}>
-              <Typography variant='h3'>23rd MC Subcommittee Recruitment</Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant='body1'>
-            The 23rd Management Committee is looking to recruit passionate and committed subcommittee members to serve the SoC community. Find out more about the eight cells here and join now!
-          </Typography>
-          {/* <Box mt={4}>
-            <Typography variant='body2' color='primary'>
-              Sign-ups opening soon!
-            </Typography>
-          </Box> */}
-          <Box mt={4} mb={2}>
-            <SignUpButton></SignUpButton>
-          </Box>
-        </Grid>
-        {data.map((item) =>
-          <Grid item xs={12} md={6} key={item.title}>
-            <OutlinedCard {...item} image={images[item.title.replace(/' '/g, '')]}></OutlinedCard>
+  const images = useStaticQuery(graphql`{
+  Sports: file(relativePath: {eq: "sports.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 600, layout: CONSTRAINED)
+    }
+  }
+  FOP: file(relativePath: {eq: "fop.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 600, layout: CONSTRAINED)
+    }
+  }
+  CommunityService: file(relativePath: {eq: "communityservice.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 600, layout: CONSTRAINED)
+    }
+  }
+  AcademicLiaison: file(relativePath: {eq: "academicliaison.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 600, layout: CONSTRAINED)
+    }
+  }
+  Marketing: file(relativePath: {eq: "marketing.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 600, layout: CONSTRAINED)
+    }
+  }
+  Publicity: file(relativePath: {eq: "publicity.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 600, layout: CONSTRAINED)
+    }
+  }
+  StudentRelations: file(relativePath: {eq: "studentrelations.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 600, layout: CONSTRAINED)
+    }
+  }
+  Welfare: file(relativePath: {eq: "welfare.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 600, layout: CONSTRAINED)
+    }
+  }
+}
+`)
+  return (
+    <BaseContainer title='23rd MC Subcommittee Recruitment'>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Box mt={4}>
+                <Typography variant='h3'>23rd MC Subcommittee Recruitment</Typography>
+            </Box>
           </Grid>
-        )}
-      </Grid>
-  </BaseContainer>;
+          <Grid item xs={12}>
+            <Typography variant='body1'>
+              The 23rd Management Committee is looking to recruit passionate and committed subcommittee members to serve the SoC community. Find out more about the eight cells here and join now!
+            </Typography>
+            {/* <Box mt={4}>
+              <Typography variant='body2' color='primary'>
+                Sign-ups opening soon!
+              </Typography>
+            </Box> */}
+            <Box mt={4} mb={2}>
+              <SignUpButton></SignUpButton>
+            </Box>
+          </Grid>
+          {data.map((item) =>
+            <Grid item xs={12} md={6} key={item.title}>
+              <OutlinedCard {...item} image={images[item.title.replace(/' '/g, '')]}></OutlinedCard>
+            </Grid>
+          )}
+        </Grid>
+    </BaseContainer>
+  );
 }
 
 export default RecruitmentPage

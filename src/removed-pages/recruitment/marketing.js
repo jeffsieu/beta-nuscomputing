@@ -21,31 +21,24 @@ const Marketing = () => {
           position: 'Deputy Director (Merchandise)',
         },
       ],
-      query: useStaticQuery(graphql`
-        query {
-          TeanWeiJun: file(relativePath: { eq: "teanweijun.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 400, maxHeight: 250) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-          OliverGui: file(relativePath: { eq: "olivergui.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 400, maxHeight: 250) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-          MalcolmSng: file(relativePath: { eq: "malcolmsng.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 400, maxHeight: 250) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      `),
+      query: useStaticQuery(graphql`{
+  TeanWeiJun: file(relativePath: {eq: "teanweijun.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 400, height: 250, layout: CONSTRAINED)
+    }
+  }
+  OliverGui: file(relativePath: {eq: "olivergui.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 400, height: 250, layout: CONSTRAINED)
+    }
+  }
+  MalcolmSng: file(relativePath: {eq: "malcolmsng.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 400, height: 250, layout: CONSTRAINED)
+    }
+  }
+}
+`),
     },
     sections: [
       {

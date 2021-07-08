@@ -3,7 +3,7 @@ import { Avatar, Box, Button, Divider, Grid, Hidden, Typography } from '@materia
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import { makeStyles } from '@material-ui/core/styles';
 import { navigate } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 import SignUpButton from './sign-up-button'
 
 const useStyles = makeStyles((theme) => ({
@@ -71,74 +71,76 @@ const RecruitmentDetails = (props) => {
       onClick={() => navigate(-1)}
       startIcon={<ArrowBack />}>Back to recruitment page
     </Button>;
-  return <div>
-    <BackButton></BackButton>
-    <Box display='flex' mt={4}>
-      <Typography variant='h3'>
-        {props.name}
-      </Typography>
-      <Spacer/>
-      <Hidden lgDown>
-        <div>
-          <SignUpButton/>
-        </div>
-      </Hidden>
-    </Box>
-    <Box mt={4}>
-      <Typography variant='h4'>The Team</Typography>
-    </Box>
-    <Hidden smDown>
-      <Box display='flex' flexDirection="row" mt={4}>
+  return (
+    <div>
+      <BackButton></BackButton>
+      <Box display='flex' mt={4}>
+        <Typography variant='h3'>
+          {props.name}
+        </Typography>
         <Spacer/>
-          {props.team.people.map((person, index) =>
-            <Box key={index} display="flex" m="auto" flexDirection="column" justify='center' alignItems='center' ml={index === 0 ? 0 : 4}>
-              <Avatar className={classes.large} alt={person.name} component={Img} fluid={props.team.query[person.name.replace(/ /g, '')].childImageSharp.fluid}/>
-              <Box mt={1}>
-                <Typography variant='h6'>{person.name}</Typography>
-              </Box>
-              <Typography variant='overline' style={{lineHeight: '1', textAlign: 'center'}}>{person.position}</Typography>
-            </Box>
-          )}
-        <Spacer/>
+        <Hidden lgDown>
+          <div>
+            <SignUpButton/>
+          </div>
+        </Hidden>
       </Box>
-    </Hidden>
-    <Hidden mdUp>
-      <Grid container>
-        {props.team.people.map((person, index) =>
-          <Grid item xs={6} key={index}>
-            <Box mt={4} style={{ display: 'flex', flexDirection: 'column'}}  justifyContent='center' alignItems='center' >
-              <Avatar className={classes.large} alt={person.name} component={Img} fluid={props.team.query[person.name.replace(/ /g, '')].childImageSharp.fluid} />
-              <Box mt={1}>
-                <Typography variant='h6'>{person.name}</Typography>
-              </Box>
-              <Typography variant='overline' style={{ lineHeight: '1', textAlign: 'center' }}>{person.position}</Typography>
-            </Box>
-          </Grid>
-        )}
-      </Grid>
-    </Hidden>
-    {props.sections.map(
-      (section, index) => <Section key={index} {...section} headerSize='h4'></Section>
-    )}
-    <Hidden xsDown>
-      <Box mt={4} display='flex'>
-        <BackButton></BackButton>
-        <Spacer />
-        <Box display='flex' flexDirection='column' justifyContent='center'>
-          <SignUpButton />
-        </Box>
-      </Box>
-    </Hidden>
-    <Hidden smUp>
       <Box mt={4}>
-        <BackButton></BackButton>
-        <Spacer />
-        <Box ml={1}>
-          <SignUpButton />
-        </Box>
+        <Typography variant='h4'>The Team</Typography>
       </Box>
-    </Hidden>
-  </div>
+      <Hidden smDown>
+        <Box display='flex' flexDirection="row" mt={4}>
+          <Spacer/>
+            {props.team.people.map((person, index) =>
+              <Box key={index} display="flex" m="auto" flexDirection="column" justify='center' alignItems='center' ml={index === 0 ? 0 : 4}>
+                <Avatar className={classes.large} alt={person.name} component={GatsbyImage} fluid={props.team.query[person.name.replace(/ /g, '')].childImageSharp.gatsbyImageData}/>
+                <Box mt={1}>
+                  <Typography variant='h6'>{person.name}</Typography>
+                </Box>
+                <Typography variant='overline' style={{lineHeight: '1', textAlign: 'center'}}>{person.position}</Typography>
+              </Box>
+            )}
+          <Spacer/>
+        </Box>
+      </Hidden>
+      <Hidden mdUp>
+        <Grid container>
+          {props.team.people.map((person, index) =>
+            <Grid item xs={6} key={index}>
+              <Box mt={4} style={{ display: 'flex', flexDirection: 'column'}}  justifyContent='center' alignItems='center' >
+                <Avatar className={classes.large} alt={person.name} component={GatsbyImage} fluid={props.team.query[person.name.replace(/ /g, '')].childImageSharp.gatsbyImageData} />
+                <Box mt={1}>
+                  <Typography variant='h6'>{person.name}</Typography>
+                </Box>
+                <Typography variant='overline' style={{ lineHeight: '1', textAlign: 'center' }}>{person.position}</Typography>
+              </Box>
+            </Grid>
+          )}
+        </Grid>
+      </Hidden>
+      {props.sections.map(
+        (section, index) => <Section key={index} {...section} headerSize='h4'></Section>
+      )}
+      <Hidden xsDown>
+        <Box mt={4} display='flex'>
+          <BackButton></BackButton>
+          <Spacer />
+          <Box display='flex' flexDirection='column' justifyContent='center'>
+            <SignUpButton />
+          </Box>
+        </Box>
+      </Hidden>
+      <Hidden smUp>
+        <Box mt={4}>
+          <BackButton></BackButton>
+          <Spacer />
+          <Box ml={1}>
+            <SignUpButton />
+          </Box>
+        </Box>
+      </Hidden>
+    </div>
+  );
 }
 
 export default RecruitmentDetails

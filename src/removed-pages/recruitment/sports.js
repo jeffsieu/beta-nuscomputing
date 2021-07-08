@@ -17,24 +17,19 @@ const Sports = () => {
           position: 'Deputy Director',
         },
       ],
-      query: useStaticQuery(graphql`
-        query {
-          ReneeLee: file(relativePath: { eq: "reneelee.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 400, maxHeight: 250) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-          LimYuLong: file(relativePath: { eq: "limyulong.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 400, maxHeight: 250) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      `),
+      query: useStaticQuery(graphql`{
+  ReneeLee: file(relativePath: {eq: "reneelee.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 400, height: 250, layout: CONSTRAINED)
+    }
+  }
+  LimYuLong: file(relativePath: {eq: "limyulong.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 400, height: 250, layout: CONSTRAINED)
+    }
+  }
+}
+`),
     },
     sections: [
       {

@@ -8,7 +8,7 @@ import RAG from '../../content/RAG.yaml'
 import FSC from '../../content/FSC.yaml'
 import FOW from '../../content/FOW.yaml'
 import { graphql, Link as GatsbyLink, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const events = [
   FSC,
@@ -76,56 +76,54 @@ function getEventSignupEndDateString(event) {
 }
 
 export default function FreshmenPage() {
-  const query = useStaticQuery(graphql`
-  query {
-    banners: allFile(filter: {extension: {glob: "jpg"}, relativePath: {regex: "/freshmen/.*?/banner/"}}) {
-      edges {
-        node {
-          relativePath
-          childImageSharp {
-            fluid(maxWidth: 1920) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    }
-    people: allFile(filter: {extension: {glob: "jpg"}, relativePath: {regex: "/freshmen/.*?/.+/"}}) {
-      edges {
-        node {
-          name
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    }
-    gallery: allFile(filter: {extension: {glob: "jpg"}, relativePath: {regex: "/freshmen/.*?/gallery/"}}) {
-      edges {
-        node {
-          relativePath
-          childImageSharp {
-            fluid(maxWidth: 1200) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+  const query = useStaticQuery(graphql`{
+  banners: allFile(
+    filter: {extension: {glob: "jpg"}, relativePath: {regex: "/freshmen/.*?/banner/"}}
+  ) {
+    edges {
+      node {
+        relativePath
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
     }
   }
-  
-  `);
-  const imagesRaw = query.people.edges;
-  const bannersRaw = query.banners.edges
-  const galleryRaw = query.gallery.edges;
-  const images = {}, banners = {}, gallery = {};
-  
-  imagesRaw.forEach(({ node }) => {
-    images[node.name] = node;
+  people: allFile(
+    filter: {extension: {glob: "jpg"}, relativePath: {regex: "/freshmen/.*?/.+/"}}
+  ) {
+    edges {
+      node {
+        name
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
+        }
+      }
+    }
+  }
+  gallery: allFile(
+    filter: {extension: {glob: "jpg"}, relativePath: {regex: "/freshmen/.*?/gallery/"}}
+  ) {
+    edges {
+      node {
+        relativePath
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
+        }
+      }
+    }
+  }
+}
+`);
+  const peopleNodes = query.people.edges;
+  const bannerNodes = query.banners.edges
+  const galleryNodes = query.gallery.edges;
+  const peopleImages = {}, banners = {}, gallery = {};
+  peopleNodes.forEach(({ node }) => {
+    peopleImages[node.name] = node;
   });
-  bannersRaw.forEach(({ node }) => {
+  console.log(peopleImages);
+  bannerNodes.forEach(({ node }) => {
     // something like freshmen/event/gallery/category/xxx/.../
     const relativePath = node.relativePath;
   
@@ -140,7 +138,7 @@ export default function FreshmenPage() {
       }
     }
   });
-  galleryRaw.forEach(({ node }) => {
+  galleryNodes.forEach(({ node }) => {
     // something like freshmen/event/gallery/category/xxx/.../
     const relativePath = node.relativePath;
   
@@ -160,100 +158,105 @@ export default function FreshmenPage() {
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('md'));
   
-  return <div>
-      <Typography variant='h3'>
-        {FOP.title}
-      </Typography>
-      <Typography variant='h5'>
-        {FOP.subtitle}
-      </Typography>
-      <Box mt={4}>
-        <Typography variant='body1'>
-          {FOP.content}
+  return (
+    <div>
+        <Typography variant='h3'>
+          {FOP.title}
         </Typography>
-      </Box>
-      <Box mt={8} mb={4}>
-        <Typography id='timeline' variant='h4'>
-          Timeline
+        <Typography variant='h5'>
+          {FOP.subtitle}
         </Typography>
-        <Box mt={2}>
-          <Card variant='outlined'  bodyStyle={{ padding: "0"}}>
-            <Alert severity='success'>
-              <AlertTitle><strong>Updates: Sign ups are open!</strong></AlertTitle>
-              Sign up for various events and check out other useful links at  <Link href='https://linktr.ee/socfop'>https://linktr.ee/socfop</Link>!
-            </Alert>
-            <Alert severity="warning">
-              <AlertTitle><strong>COVID Restrictions</strong></AlertTitle>
-              In consultation with NUSSU, all face-to-face activities for FOP happening between <u>1 June to 4 July</u> will be suspended.
-              <br/>
-              Further updates will be provided for face-to-face activities for FOP happening between 5 July to 31 July.
-            </Alert>
-          </Card>
-          {
-            events.map((event, index) => {
-              const image = banners[event.path] ? banners[event.path]['banner.jpg'] : Object.values(gallery[event.path])[0];
-              const isEven = index % 2 === 0;
-              return <Box mt={2}>
-                <GatsbyLink to={event.path} style={{textDecoration: 'none'}}>
-                  <Card key={event.path} variant='outlined'>
-                    <CardActionArea
-                      className={isLargeScreen ? classes.eventCardRoot : ''}
-                      >
-                      <Img
-                        className={classes.eventCardImage} fluid={image?.childImageSharp?.fluid ?? null}
-                        style={{
-                          order: isEven ? 1 : 0,
-                        }}></Img>
-                      <CardHeader
-                        className={isLargeScreen ? classes.eventCardContent : ''}
-                        title={getEventNameString(event)}
-                        subheader={
-                          event.cancelled
-                          ? <Typography variant='h6' color="error">Cancelled due to COVID-19 restrictions :(</Typography>
-                          : <div>
-                            <Typography variant='h6' color='primary'>{getEventDateString(event)}</Typography>
-                            <Typography>{getEventSignupEndDateString(event)}</Typography>
-                          </div>}
-                      >
-                      </CardHeader>
-                    </CardActionArea>
-                  </Card>
-                </GatsbyLink>
-              </Box>
-          })}
-        </Box>
-      </Box>
-      <Box mt={8}>
-        <Box mb={2}>
-          <Typography variant='h4'>Instagram</Typography>
-          <Typography variant='h6'>
-             Check us out at <Link color='secondary' href='https://www.instagram.com/socfop/'>@socfop</Link>
+        <Box mt={4}>
+          <Typography variant='body1'>
+            {FOP.content}
           </Typography>
         </Box>
-        <iframe
-          title="socfop's Instagram"
-          src="https://cdn.lightwidget.com/widgets/6432297d5f1656eba2e7dd52ff7a9a17.html"
-          scrolling="no"
-          allowtransparency="true"
-          className={classes.instagramWidget}>
-        </iframe>
-      </Box>
-    {
-      FOP.faq ?
-        <Box mt={8}>
-          <Typography variant='h4'>FAQs</Typography>
-          {FOP.faq.map((question) => {
-            return <Box mt={2}>
-              <Typography variant='h6'>
-                {question.title}
-              </Typography>
-              <Typography variant='body1'>
-                {question.answer}
-              </Typography>
-            </Box>
-          })}
+        <Box mt={8} mb={4}>
+          <Typography id='timeline' variant='h4'>
+            Timeline
+          </Typography>
+          <Box mt={2}>
+            <Card variant='outlined'  bodyStyle={{ padding: "0"}}>
+              <Alert severity='success'>
+                <AlertTitle><strong>Updates: Sign ups are open!</strong></AlertTitle>
+                Sign up for various events and check out other useful links at  <Link href='https://linktr.ee/socfop'>https://linktr.ee/socfop</Link>!
+              </Alert>
+              <Alert severity="warning">
+                <AlertTitle><strong>COVID Restrictions</strong></AlertTitle>
+                In consultation with NUSSU, all face-to-face activities for FOP happening between <u>1 June to 4 July</u> will be suspended.
+                <br/>
+                Further updates will be provided for face-to-face activities for FOP happening between 5 July to 31 July.
+              </Alert>
+            </Card>
+            {
+              events.map((event, index) => {
+                const image = banners[event.path] ? banners[event.path]['banner.jpg'] : Object.values(gallery[event.path])[0];
+                const isEven = index % 2 === 0;
+                return (
+                  <Box mt={2}>
+                    <GatsbyLink to={event.path} style={{textDecoration: 'none'}}>
+                      <Card key={event.path} variant='outlined'>
+                        <CardActionArea
+                          className={isLargeScreen ? classes.eventCardRoot : ''}
+                          >
+                          <GatsbyImage
+                            image={getImage(image)}
+                            className={classes.eventCardImage}
+                            style={{
+                              order: isEven ? 1 : 0,
+                            }} />
+                          <CardHeader
+                            className={isLargeScreen ? classes.eventCardContent : ''}
+                            title={getEventNameString(event)}
+                            subheader={
+                              event.cancelled
+                              ? <Typography variant='h6' color="error">Cancelled due to COVID-19 restrictions :(</Typography>
+                              : <div>
+                                <Typography variant='h6' color='primary'>{getEventDateString(event)}</Typography>
+                                <Typography>{getEventSignupEndDateString(event)}</Typography>
+                              </div>}
+                          >
+                          </CardHeader>
+                        </CardActionArea>
+                      </Card>
+                    </GatsbyLink>
+                  </Box>
+                );
+            })}
+          </Box>
         </Box>
-        : null
-    }
-  </div>;
+        <Box mt={8}>
+          <Box mb={2}>
+            <Typography variant='h4'>Instagram</Typography>
+            <Typography variant='h6'>
+               Check us out at <Link color='secondary' href='https://www.instagram.com/socfop/'>@socfop</Link>
+            </Typography>
+          </Box>
+          <iframe
+            title="socfop's Instagram"
+            src="https://cdn.lightwidget.com/widgets/6432297d5f1656eba2e7dd52ff7a9a17.html"
+            scrolling="no"
+            allowtransparency="true"
+            className={classes.instagramWidget}>
+          </iframe>
+        </Box>
+      {
+        FOP.faq ?
+          <Box mt={8}>
+            <Typography variant='h4'>FAQs</Typography>
+            {FOP.faq.map((question) => {
+              return <Box mt={2}>
+                <Typography variant='h6'>
+                  {question.title}
+                </Typography>
+                <Typography variant='body1'>
+                  {question.answer}
+                </Typography>
+              </Box>
+            })}
+          </Box>
+          : null
+      }
+    </div>
+  );
 }

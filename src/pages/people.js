@@ -3,7 +3,7 @@ import BaseContainer from '../components/base-container'
 import { Box, Divider, Grid, Link, Typography } from '@material-ui/core'
 import { useStaticQuery, graphql, Link as GatsbyLink } from 'gatsby';
 import WingContainer from '../components/people/wing-container'
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const peopleArray = [
   {
@@ -125,27 +125,23 @@ const peopleArray = [
 ];
 
 function PeoplePage() {
-  const { allFile } = useStaticQuery(graphql`
-    query {
-      allFile(filter: {
-        extension: {regex: "/(jpg)|(jpeg)|(png)/"}, 
-        sourceInstanceName: {eq: "peopleImages"}}
-        ) 
-      {
-        edges {
-          node {
-            childImageSharp {
-              fluid(maxWidth: 1000, quality: 100) {
-                originalName
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
+  const { allFile } = useStaticQuery(graphql`{
+  allFile(
+    filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, sourceInstanceName: {eq: "peopleImages"}}
+  ) {
+    edges {
+      node {
+        name
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
-    }`);
+    }
+  }
+}
+`);
 
-  const images = Object.assign({}, ...allFile.edges.map(edge => ({ [edge.node.childImageSharp.fluid.originalName.split('.')[0]]: edge.node.childImageSharp.fluid })));
+  const images = Object.assign({}, ...allFile.edges.map(edge => ({ [edge.node.name]: getImage(edge.node) })));
 
   peopleArray.forEach((person) => {
     const keyPrefix = person.name.replace(/ /g, '').replace(/,/g, '');
@@ -302,39 +298,41 @@ function PeoplePage() {
     wings: wings,
   };
 
-  return <BaseContainer title='People'>
-    <Box mb={4}>
-      <Typography variant="h3">
-        People
-      </Typography>
-      <Typography variant="h4">
-        23rd Management Committee
-      </Typography>
-    </Box>
-    <Grid container spacing={4}>
-      {
-        props.wings.map((wing) =>
-          <Grid item xs={12} md={6}>
-            <a aria-label={`Photo of ${wing.name}`} href={`#${wing.name}`}><Img fluid={wing.image} style={{borderRadius: '8px'}}/></a>
-            <Box mt={2}>
-              <Typography variant="subtitle1">
-                <Link component={GatsbyLink} href={`#${wing.name}`}>{wing.name}</Link>
-              </Typography>
-            </Box>
-          </Grid>
-        )
-      }
-    </Grid>
-    <Box mt={8} mb={4}>
-      <Divider></Divider>
-    </Box>
-    {props.wings.map((wing) =>
-      <Box mt={8}>
-        <WingContainer {...wing} />
+  return (
+    <BaseContainer title='People'>
+      <Box mb={4}>
+        <Typography variant="h3">
+          People
+        </Typography>
+        <Typography variant="h4">
+          23rd Management Committee
+        </Typography>
       </Box>
-    )}
+      <Grid container spacing={4}>
+        {
+          props.wings.map((wing) =>
+            <Grid item xs={12} md={6}>
+              <a aria-label={`Photo of ${wing.name}`} href={`#${wing.name}`}><GatsbyImage image={wing.image} style={{borderRadius: '8px'}} /></a>
+              <Box mt={2}>
+                <Typography variant="subtitle1">
+                  <Link component={GatsbyLink} href={`#${wing.name}`}>{wing.name}</Link>
+                </Typography>
+              </Box>
+            </Grid>
+          )
+        }
+      </Grid>
+      <Box mt={8} mb={4}>
+        <Divider></Divider>
+      </Box>
+      {props.wings.map((wing) =>
+        <Box mt={8}>
+          <WingContainer {...wing} />
+        </Box>
+      )}
 
-  </BaseContainer>;
+    </BaseContainer>
+  );
 }
 
 export default PeoplePage
