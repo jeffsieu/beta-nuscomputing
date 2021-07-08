@@ -160,9 +160,7 @@ function IfgRecruitmentPage() {
                         <Card
                           variant='outlined' style={{ borderRadius: '8px' }}>
                           <CardActionArea>
-                            <CardMedia
-                            // title={`${props.name} (${props.title})`}
-                            >
+                            <CardMedia>
                               <GatsbyImage image={getImage(images[game.image])} aspectRatio={3} />
                             </CardMedia>
                             <CardContent>
