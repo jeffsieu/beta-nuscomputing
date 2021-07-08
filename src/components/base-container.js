@@ -60,12 +60,11 @@ function BaseContainer(props) {
       <TopBar transparent={props.background != null}/>
       <Toolbar/>
         {
-          props.background ?
+          props.background &&
             <GatsbyImage
               image={getImage(props.background)}
-              style={{marginTop: '-68px', maxHeight: '75vh'}}
-              imgStyle={{objectFit: 'cover', objectPosition: props.backgroundPosition ?? '0% 50%'}} />
-          : null
+              style={{marginTop: '-68px', maxHeight: '50vh', minHeight: '25vh'}}
+              imgStyle={{objectFit: 'cover', objectPosition: props.backgroundPosition ?? '50% 50%'}} />
         }
       <Box py={8}>
         {
