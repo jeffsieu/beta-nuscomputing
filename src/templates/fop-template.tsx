@@ -268,8 +268,6 @@ const FopTemplatePage: React.FC<any> = (props) => {
     return map;
   }, new Map<string, PersonNode>());
 
-  console.log(bannerImage);
-
   const gallery = galleryNodes.reduce((map, imageNode) => {
     // something like freshmen/event/gallery/category/xxx/.../
     const relativePath = imageNode.relativePath;

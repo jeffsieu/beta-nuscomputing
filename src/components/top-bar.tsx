@@ -11,12 +11,13 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import MenuIcon from '@material-ui/icons/Menu';
 import { useTheme } from '@material-ui/core/styles';
 
-import { Box, Drawer, List, IconButton, ListItem, ListItemText, Hidden } from '@material-ui/core'
+import { Box, Drawer, List, IconButton, ListItem, ListItemText, Hidden, Tooltip, ListItemIcon, Divider } from '@material-ui/core'
 import { useState } from 'react';
 import { ReactElement } from 'react';
-import { DarkMode } from 'use-dark-mode';
 import DarkBrightness from '@material-ui/icons/Brightness4';
 import LightBrightness from '@material-ui/icons/Brightness7';
+import ThemeBrightnessContext from '../../plugins/gatsby-plugin-top-layout/ThemeBrightnessContext'
+import { useContext } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,8 +27,14 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.type == 'light' ? '#ffffff' : '#121212',
   },
   appBarTransparent: {
-    background: theme.palette.type == 'light' ? '#ffffffbb' : '#333333bb',
+    background: theme.palette.type == 'light' ? '#ffffffbb' : '#121212bb',
+    transition: 'background 0.3s',
     backdropFilter: 'blur(10px)',
+  },
+  elevated: {
+    '& > div': {
+      background: theme.palette.type == 'dark' ? '#333333bb' : null,
+    },
   },
   spacer: {
     flexGrow: 1,
@@ -35,11 +42,12 @@ const useStyles = makeStyles((theme) => ({
   links: {
     fontFamily: 'Kumbh Sans, sans-serif',
     outline: 'none',
-    '& > *': {  
+    '& > a': {
       marginRight: theme.spacing(4),
     },
-    '& a': {
-    }
+  },
+  highlightedLink: {
+    fontWeight: 'bold',
   },
   computingClub: {
     marginLeft: '8px',
@@ -55,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: '256px',
   },
   drawerBackground: {
-    background: theme.palette.type == 'light' ? '#ffffffbb' : '#333333bb',
+    background: theme.palette.type == 'light' ? '#ffffffbb' : '#121212bb',
     backdropFilter: 'blur(10px)',
   }
 }));
@@ -65,9 +73,7 @@ type ElevationScrollProps = {
 }
 
 const ElevationScroll: React.FC<ElevationScrollProps> = function ({ children }) {
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
+  const classes = useStyles();
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
@@ -75,6 +81,7 @@ const ElevationScroll: React.FC<ElevationScrollProps> = function ({ children }) 
 
   return React.cloneElement(children, {
     elevation: trigger ? 4 : 0,
+    className: trigger ? classes.elevated : '',
   });
 }
 
@@ -125,12 +132,12 @@ const navigationLinks: NavigationLink[] = [
 
 type TopBarProps = {
   transparent: boolean,
-  // darkMode: DarkMode,
 }
 
 const TopBar: React.FC<TopBarProps> = function ({ transparent = false }) {
   const classes = useStyles();
   const theme = useTheme();
+  const { isDark, toggleBrightness } = useContext(ThemeBrightnessContext);
 
   const isXxs = useMediaQuery('(max-width:400px)');
   const mdDown = useMediaQuery(theme.breakpoints.down('sm'));
@@ -152,6 +159,14 @@ const TopBar: React.FC<TopBarProps> = function ({ transparent = false }) {
     }
     setDrawerOpen(open);
   };
+
+  const ToggleThemeIcon = () => isDark ? <LightBrightness /> : <DarkBrightness />;
+
+  const ToggleThemeButton = () => <Tooltip title="Toggle light/dark theme" aria-label="toggle theme">
+    <IconButton color="primary" aria-label="upload picture" component="span" onClick={() => toggleBrightness()}>
+      <ToggleThemeIcon />
+    </IconButton>
+  </Tooltip>;
 
   return (
     <header>
@@ -186,27 +201,20 @@ const TopBar: React.FC<TopBarProps> = function ({ transparent = false }) {
               </Hidden>
             </div>
             <Hidden smDown>
-              <div style={{ color: 'white', verticalAlign: 'middle', display:'table-cell' }} className={classes.links}>
+              <div style={{ color: 'white', verticalAlign: 'middle', display: 'table-cell' }} className={classes.links}>
                 {
                   navigationLinks.map(link =>
                     <Link
-                      style={{paddingTop: '12px', paddingBottom: '12px', verticalAlign: 'text-top'}}
+                      style={{ paddingTop: '12px', paddingBottom: '12px', verticalAlign: 'text-top' }}
                       key={link.title}
-                      color={link.highlight ? 'secondary' : 'primary'}
+                      className={link.highlight ? classes.highlightedLink : ''}
                       href={link.link}
                       target={link.newTab ? '_blank' : '_self'}
                       rel={link.newTab ? 'noreferrer' : ''}
                     >{link.title}
                     </Link>
                   )}
-                {/* <IconButton color="primary" aria-label="upload picture" component="span" onClick={darkMode.toggle}>
-                  {
-                    darkMode.value ?
-                    <DarkBrightness/>
-                    :
-                    <LightBrightness/>
-                  }
-                </IconButton> */}
+                <ToggleThemeButton></ToggleThemeButton>
               </div>
             </Hidden>
             {/* <Button variant='contained' color='primary' component={GatsbyLink} to='/recruitment'>Recruitment</Button> */}
@@ -245,13 +253,25 @@ const TopBar: React.FC<TopBarProps> = function ({ transparent = false }) {
                   <ListItem key={link.title} button component='a' href={link.link} target={link.newTab ? '_blank' : '_self'} rel={link.newTab ? 'noreferrer' : ''}>
                     <ListItemText disableTypography>
                       <Box pl={0}>
-                        <Typography color={link.highlight ? 'secondary' : 'primary'} variant='h6'>
+                        <Typography
+                          color='primary'
+                          className={link.highlight ? classes.highlightedLink : ''}
+                          variant='h6'
+                        >
                           {link.title}
                         </Typography>
                       </Box>
                     </ListItemText>
                   </ListItem>
                 ))}
+                <Divider></Divider>
+                <ListItem key={'toggle theme button'} button component='a' onClick={() => toggleBrightness()}>
+                  <ListItemText disableTypography>
+                      <Typography color='textSecondary' variant='h6' component='span'>
+                        Toggle theme
+                      </Typography>
+                  </ListItemText>
+                </ListItem>
               </List>
             </nav>
           </Box>

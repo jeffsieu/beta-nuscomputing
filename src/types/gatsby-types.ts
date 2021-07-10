@@ -60,8 +60,8 @@ export type ContentYaml = Node & {
   signup_end_date: Maybe<Scalars['Date']>;
   content: Maybe<Array<Maybe<Scalars['String']>>>;
   committee: Maybe<ContentYamlCommittee>;
-  cancelled: Maybe<Scalars['Boolean']>;
   gallery: Maybe<Array<Maybe<ContentYamlGallery>>>;
+  cancelled: Maybe<Scalars['Boolean']>;
 };
 
 
@@ -310,10 +310,10 @@ export enum ContentYamlFieldsEnum {
   CommitteeSubcommitteeMembers = 'committee___subcommittee___members',
   CommitteeSubcommitteeMembersName = 'committee___subcommittee___members___name',
   CommitteeSubcommitteeMembersTitle = 'committee___subcommittee___members___title',
-  Cancelled = 'cancelled',
   Gallery = 'gallery',
   GalleryUrl = 'gallery___url',
-  GalleryCaption = 'gallery___caption'
+  GalleryCaption = 'gallery___caption',
+  Cancelled = 'cancelled'
 }
 
 export type ContentYamlFilterInput = {
@@ -331,8 +331,8 @@ export type ContentYamlFilterInput = {
   signup_end_date: Maybe<DateQueryOperatorInput>;
   content: Maybe<StringQueryOperatorInput>;
   committee: Maybe<ContentYamlCommitteeFilterInput>;
-  cancelled: Maybe<BooleanQueryOperatorInput>;
   gallery: Maybe<ContentYamlGalleryFilterListInput>;
+  cancelled: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type ContentYamlFilterListInput = {
@@ -1183,10 +1183,10 @@ export enum FileFieldsEnum {
   ChildrenContentYamlCommitteeSubcommittee = 'childrenContentYaml___committee___subcommittee',
   ChildrenContentYamlCommitteeSubcommitteeName = 'childrenContentYaml___committee___subcommittee___name',
   ChildrenContentYamlCommitteeSubcommitteeMembers = 'childrenContentYaml___committee___subcommittee___members',
-  ChildrenContentYamlCancelled = 'childrenContentYaml___cancelled',
   ChildrenContentYamlGallery = 'childrenContentYaml___gallery',
   ChildrenContentYamlGalleryUrl = 'childrenContentYaml___gallery___url',
   ChildrenContentYamlGalleryCaption = 'childrenContentYaml___gallery___caption',
+  ChildrenContentYamlCancelled = 'childrenContentYaml___cancelled',
   ChildContentYamlId = 'childContentYaml___id',
   ChildContentYamlParentId = 'childContentYaml___parent___id',
   ChildContentYamlParentParentId = 'childContentYaml___parent___parent___id',
@@ -1240,10 +1240,10 @@ export enum FileFieldsEnum {
   ChildContentYamlCommitteeSubcommittee = 'childContentYaml___committee___subcommittee',
   ChildContentYamlCommitteeSubcommitteeName = 'childContentYaml___committee___subcommittee___name',
   ChildContentYamlCommitteeSubcommitteeMembers = 'childContentYaml___committee___subcommittee___members',
-  ChildContentYamlCancelled = 'childContentYaml___cancelled',
   ChildContentYamlGallery = 'childContentYaml___gallery',
   ChildContentYamlGalleryUrl = 'childContentYaml___gallery___url',
   ChildContentYamlGalleryCaption = 'childContentYaml___gallery___caption',
+  ChildContentYamlCancelled = 'childContentYaml___cancelled',
   Id = 'id',
   ParentId = 'parent___id',
   ParentParentId = 'parent___parent___id',
@@ -2425,8 +2425,8 @@ export type QueryContentYamlArgs = {
   signup_end_date: Maybe<DateQueryOperatorInput>;
   content: Maybe<StringQueryOperatorInput>;
   committee: Maybe<ContentYamlCommitteeFilterInput>;
-  cancelled: Maybe<BooleanQueryOperatorInput>;
   gallery: Maybe<ContentYamlGalleryFilterListInput>;
+  cancelled: Maybe<BooleanQueryOperatorInput>;
 };
 
 
@@ -3333,10 +3333,6 @@ export enum SitePageFieldsEnum {
   PluginCreatorResolve = 'pluginCreator___resolve',
   PluginCreatorName = 'pluginCreator___name',
   PluginCreatorVersion = 'pluginCreator___version',
-  PluginCreatorPluginOptionsClassNameDark = 'pluginCreator___pluginOptions___classNameDark',
-  PluginCreatorPluginOptionsClassNameLight = 'pluginCreator___pluginOptions___classNameLight',
-  PluginCreatorPluginOptionsStorageKey = 'pluginCreator___pluginOptions___storageKey',
-  PluginCreatorPluginOptionsMinify = 'pluginCreator___pluginOptions___minify',
   PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
   PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
   PluginCreatorPluginOptionsDefaultsQuality = 'pluginCreator___pluginOptions___defaults___quality',
@@ -3358,6 +3354,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsIncludeFavicon = 'pluginCreator___pluginOptions___include_favicon',
   PluginCreatorPluginOptionsCacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
   PluginCreatorPluginOptionsTypeName = 'pluginCreator___pluginOptions___typeName',
+  PluginCreatorPluginOptionsDisableAutoprefixing = 'pluginCreator___pluginOptions___disableAutoprefixing',
   PluginCreatorPluginOptionsStylesProviderInjectFirst = 'pluginCreator___pluginOptions___stylesProvider___injectFirst',
   PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
   PluginCreatorPluginOptionsAllExtensions = 'pluginCreator___pluginOptions___allExtensions',
@@ -3371,6 +3368,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPackageJsonDescription = 'pluginCreator___packageJson___description',
   PluginCreatorPackageJsonVersion = 'pluginCreator___packageJson___version',
   PluginCreatorPackageJsonMain = 'pluginCreator___packageJson___main',
+  PluginCreatorPackageJsonAuthor = 'pluginCreator___packageJson___author',
   PluginCreatorPackageJsonLicense = 'pluginCreator___packageJson___license',
   PluginCreatorPackageJsonDependencies = 'pluginCreator___packageJson___dependencies',
   PluginCreatorPackageJsonDependenciesName = 'pluginCreator___packageJson___dependencies___name',
@@ -3570,10 +3568,6 @@ export enum SitePluginFieldsEnum {
   Resolve = 'resolve',
   Name = 'name',
   Version = 'version',
-  PluginOptionsClassNameDark = 'pluginOptions___classNameDark',
-  PluginOptionsClassNameLight = 'pluginOptions___classNameLight',
-  PluginOptionsStorageKey = 'pluginOptions___storageKey',
-  PluginOptionsMinify = 'pluginOptions___minify',
   PluginOptionsName = 'pluginOptions___name',
   PluginOptionsPath = 'pluginOptions___path',
   PluginOptionsDefaultsQuality = 'pluginOptions___defaults___quality',
@@ -3595,6 +3589,7 @@ export enum SitePluginFieldsEnum {
   PluginOptionsIncludeFavicon = 'pluginOptions___include_favicon',
   PluginOptionsCacheDigest = 'pluginOptions___cacheDigest',
   PluginOptionsTypeName = 'pluginOptions___typeName',
+  PluginOptionsDisableAutoprefixing = 'pluginOptions___disableAutoprefixing',
   PluginOptionsStylesProviderInjectFirst = 'pluginOptions___stylesProvider___injectFirst',
   PluginOptionsPathCheck = 'pluginOptions___pathCheck',
   PluginOptionsAllExtensions = 'pluginOptions___allExtensions',
@@ -3608,6 +3603,7 @@ export enum SitePluginFieldsEnum {
   PackageJsonDescription = 'packageJson___description',
   PackageJsonVersion = 'packageJson___version',
   PackageJsonMain = 'packageJson___main',
+  PackageJsonAuthor = 'packageJson___author',
   PackageJsonLicense = 'packageJson___license',
   PackageJsonDependencies = 'packageJson___dependencies',
   PackageJsonDependenciesName = 'packageJson___dependencies___name',
@@ -3653,6 +3649,7 @@ export type SitePluginPackageJson = {
   description: Maybe<Scalars['String']>;
   version: Maybe<Scalars['String']>;
   main: Maybe<Scalars['String']>;
+  author: Maybe<Scalars['String']>;
   license: Maybe<Scalars['String']>;
   dependencies: Maybe<Array<Maybe<SitePluginPackageJsonDependencies>>>;
   devDependencies: Maybe<Array<Maybe<SitePluginPackageJsonDevDependencies>>>;
@@ -3695,6 +3692,7 @@ export type SitePluginPackageJsonFilterInput = {
   description: Maybe<StringQueryOperatorInput>;
   version: Maybe<StringQueryOperatorInput>;
   main: Maybe<StringQueryOperatorInput>;
+  author: Maybe<StringQueryOperatorInput>;
   license: Maybe<StringQueryOperatorInput>;
   dependencies: Maybe<SitePluginPackageJsonDependenciesFilterListInput>;
   devDependencies: Maybe<SitePluginPackageJsonDevDependenciesFilterListInput>;
@@ -3719,10 +3717,6 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 
 export type SitePluginPluginOptions = {
   __typename?: 'SitePluginPluginOptions';
-  classNameDark: Maybe<Scalars['String']>;
-  classNameLight: Maybe<Scalars['String']>;
-  storageKey: Maybe<Scalars['String']>;
-  minify: Maybe<Scalars['Boolean']>;
   name: Maybe<Scalars['String']>;
   path: Maybe<Scalars['String']>;
   defaults: Maybe<SitePluginPluginOptionsDefaults>;
@@ -3743,6 +3737,7 @@ export type SitePluginPluginOptions = {
   include_favicon: Maybe<Scalars['Boolean']>;
   cacheDigest: Maybe<Scalars['String']>;
   typeName: Maybe<Scalars['String']>;
+  disableAutoprefixing: Maybe<Scalars['Boolean']>;
   stylesProvider: Maybe<SitePluginPluginOptionsStylesProvider>;
   pathCheck: Maybe<Scalars['Boolean']>;
   allExtensions: Maybe<Scalars['Boolean']>;
@@ -3762,10 +3757,6 @@ export type SitePluginPluginOptionsDefaultsFilterInput = {
 };
 
 export type SitePluginPluginOptionsFilterInput = {
-  classNameDark: Maybe<StringQueryOperatorInput>;
-  classNameLight: Maybe<StringQueryOperatorInput>;
-  storageKey: Maybe<StringQueryOperatorInput>;
-  minify: Maybe<BooleanQueryOperatorInput>;
   name: Maybe<StringQueryOperatorInput>;
   path: Maybe<StringQueryOperatorInput>;
   defaults: Maybe<SitePluginPluginOptionsDefaultsFilterInput>;
@@ -3786,6 +3777,7 @@ export type SitePluginPluginOptionsFilterInput = {
   include_favicon: Maybe<BooleanQueryOperatorInput>;
   cacheDigest: Maybe<StringQueryOperatorInput>;
   typeName: Maybe<StringQueryOperatorInput>;
+  disableAutoprefixing: Maybe<BooleanQueryOperatorInput>;
   stylesProvider: Maybe<SitePluginPluginOptionsStylesProviderFilterInput>;
   pathCheck: Maybe<BooleanQueryOperatorInput>;
   allExtensions: Maybe<BooleanQueryOperatorInput>;
@@ -3970,6 +3962,26 @@ export type Unnamed_1_Query = (
       & Pick<GatsbyTypes.SiteSiteMetadata, 'title' | 'description' | 'author'>
     )> }
   )> }
+);
+
+export type FreshmenPageBannerQueryVariables = GatsbyTypes.Exact<{ [key: string]: never; }>;
+
+
+export type FreshmenPageBannerQuery = (
+  { __typename?: 'Query' }
+  & { allFile: (
+    { __typename?: 'FileConnection' }
+    & { edges: Array<(
+      { __typename?: 'FileEdge' }
+      & { node: (
+        { __typename?: 'File' }
+        & { childImageSharp: GatsbyTypes.Maybe<(
+          { __typename?: 'ImageSharp' }
+          & Pick<GatsbyTypes.ImageSharp, 'gatsbyImageData'>
+        )> }
+      ) }
+    )> }
+  ) }
 );
 
 export type GamesQueryVariables = GatsbyTypes.Exact<{ [key: string]: never; }>;

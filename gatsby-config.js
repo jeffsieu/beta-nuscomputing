@@ -5,8 +5,17 @@ module.exports = {
     author: `@jeffsieu`,
   },
   plugins: [
+    `gatsby-plugin-top-layout`,
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-use-dark-mode`,
+    // `gatsby-plugin-use-dark-mode`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -55,14 +64,6 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `./content`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-material-ui`,
-      options: {
-        stylesProvider: {
-          injectFirst: true,
-        },
       },
     },
   ],

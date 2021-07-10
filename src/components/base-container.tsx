@@ -6,7 +6,7 @@ import useDarkMode from 'use-dark-mode';
 import SEO from './seo'
 import TopBar from './top-bar'
 import Footer from './footer'
-import { Box, Container, CssBaseline, Toolbar, useMediaQuery } from '@material-ui/core'
+import { Box, Container, CssBaseline, Toolbar, useMediaQuery, useTheme } from '@material-ui/core'
 import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { Property } from 'csstype'
 import { useMemo } from 'react';
@@ -22,56 +22,7 @@ type BaseContainerProps = {
 
 const BaseContainer: React.FC<BaseContainerProps> = (props) => {
   // const darkMode = useDarkMode(false);
-  const darkMode = {
-    value: useMediaQuery('(prefers-color-scheme: dark)')
-  };
-  const theme = useMemo(() => createTheme({
-    palette: {
-      type: darkMode.value ? 'dark' : 'light',
-      primary: {
-        main: darkMode.value ? '#8e9df0' : '#27378f',
-      },
-      secondary: {
-        main: '#f44336',
-      },
-      background: {
-        default: darkMode.value ? '#121212' : '#fff', 
-      },
-      contrastThreshold: 3,
-    },
-    typography: {
-      allVariants: {
-        color: darkMode.value ? 'white' : undefined,
-      },
-      fontFamily: [
-        'Kumbh Sans',
-        'sans-serif',
-      ].join(','),
-      body1: {
-        fontFamily: [
-          'Raleway',
-          'sans-serif',
-        ].join(','),
-      },
-      body2: {
-        fontFamily: [
-          'Raleway',
-          'sans-serif',
-        ].join(','),
-      },
-    },
-    breakpoints: createBreakpoints({
-      values: {
-        xs: 0,
-        sm: 600,
-        md: 1000,
-        lg: 1350,
-        xl: 1920,
-      },
-    }),
-  }), [darkMode]);
-
-  console.log(theme);
+  const theme = useTheme();
 
   const InnerContainer: React.FC<PropsWithChildren<{}>> = (props) => {
     const lgDown = useMediaQuery(theme.breakpoints.down('lg'));
@@ -80,8 +31,7 @@ const BaseContainer: React.FC<BaseContainerProps> = (props) => {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <div>
       <SEO {...props} />
       <TopBar transparent={props.background != null} />
       <Toolbar />
@@ -105,7 +55,7 @@ const BaseContainer: React.FC<BaseContainerProps> = (props) => {
         }
       </Box>
       <Footer />
-    </ThemeProvider>
+    </div>
   );
 }
 

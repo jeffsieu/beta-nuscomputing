@@ -95,12 +95,6 @@ export type GalleryNode = {
   childImageSharp: GatsbyTypes.Maybe<Pick<GatsbyTypes.ImageSharp, "gatsbyImageData">>,
 } & ImageDataLike;
 
-
-type FAQQuestion = {
-  title: string,
-  answer: string,
-}
-
 export default function FreshmenPage() {
   const query = useStaticQuery<GatsbyTypes.FopEventsQuery>(graphql`
     query FOPEvents {
@@ -267,8 +261,7 @@ export default function FreshmenPage() {
           {
             events.map((event, index) => {
               const eventPath = event.path!;
-              console.log(eventPath);
-              const imageNode = (banners.has(eventPath) ? banners.get(eventPath)?.get('banner.jpg') : null) ?? gallery.get(eventPath).values().next().value;
+              const imageNode = (banners.has(eventPath) ? banners.get(eventPath)?.get('banner.jpg') : null) ?? gallery.get(eventPath)?.values().next().value;
               const image = getImage(imageNode)!;
               const isEven = index % 2 === 0;
               return (
