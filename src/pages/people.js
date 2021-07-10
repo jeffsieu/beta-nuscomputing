@@ -133,7 +133,11 @@ function PeoplePage() {
       node {
         name
         childImageSharp {
-          gatsbyImageData(layout: FULL_WIDTH)
+          gatsbyImageData(
+            quality: 100
+            layout: FULL_WIDTH
+            placeholder: BLURRED
+          )
         }
       }
     }

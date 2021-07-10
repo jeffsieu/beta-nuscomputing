@@ -20,7 +20,7 @@ committee:
     - title: Vice Project Director
       name: Lee Yi Kai
   subcommittee:
-    Pro-Logs:
+    - name: Pro-Logs
       head:
         title: Pro-Logs Head
         name: Aakansha Narain
@@ -30,14 +30,14 @@ committee:
         - name: Tiew Wei Jian
         - name: Chia Wen Ling
         - name: Koh Rui Ling
-    Admin:
+    - name: Admin
       head:
         title: Admin Head
         name: Bryan Tee Pak Hong
       members:
         - name: Tan Yan Rong Amelia
         - name: Lim Fang Ding
-    Publicity:
+    - name: Publicity
       head:
         title: Publicity Head
         name: Koh Jia Xian

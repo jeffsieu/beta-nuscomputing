@@ -27,7 +27,7 @@ committee:
     - title: Vice Project Director (Admin)
       name: Jeff Sieu Yong
   subcommittee:
-    Programmes:
+    - name: Programmes
       members:
         - title: Progs Member
           name: Myron Neo
@@ -49,7 +49,7 @@ committee:
           name: Chin Juan Lee
         - title: Progs Member
           name: Shem Maleriado
-    Logistics:
+    - name: Logistics
       head:
         title: Logs Head
         name: Nicolai Neo
@@ -60,13 +60,13 @@ committee:
           name: Leeroy Liu
         - title: Logs Member
           name: Yeluri Ketan
-    Admin:
+    - name: Admin
       head:
-        title: Admin Head 
+        title: Admin Head
         name: Ang Hui Shan Angela
       members:
         - name: Alissa
-    Publicity:
+    - name: Publicity
       head:
         title: Publicity Head
         name: Jeyakumar Jegan
@@ -75,14 +75,10 @@ committee:
           name: Wong Man Chun, Mark
 gallery:
   - url: image1.jpg
-    caption:
-      Join us to have a fun and exciting Summer Camp!
+    caption: Join us to have a fun and exciting Summer Camp!
   - url: nerf.jpg
-    caption:
-      Experience the thrill of competing against others
+    caption: Experience the thrill of competing against others
   - url: friendships.jpg
-    caption:
-      Forge everlasting friendships that will last a lifetime
+    caption: Forge everlasting friendships that will last a lifetime
   - url: friendships2.jpg
-    caption:
-      Kickstart your University experience with like-minded individuals and have a good time!
+    caption: Kickstart your University experience with like-minded individuals and have a good time!

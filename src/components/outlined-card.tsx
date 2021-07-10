@@ -1,7 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core';
 import { Typography, Card, CardActions, CardActionArea, CardContent, createStyles } from '@material-ui/core';
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 
 const useStyles = makeStyles((theme) => 
   createStyles({
@@ -21,13 +21,20 @@ const useStyles = makeStyles((theme) =>
   },
 }));
 
-export default function OutlinedCard(props) {
+type OutlinedCardProps = {
+  title: string,
+  body: string,
+  link: string,
+  image: IGatsbyImageData,
+}
+
+const OutlinedCard: React.FC<OutlinedCardProps> = (props) => {
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
       <CardActionArea href={props.link}>
-        {props.image ? <GatsbyImage image={props.image.childImageSharp.gatsbyImageData} /> : null}
+        {props.image ? <GatsbyImage alt={props.title} image={props.image} /> : null}
         <CardContent>
           <Typography variant='h5'>
             {props.title}
@@ -42,3 +49,5 @@ export default function OutlinedCard(props) {
     </Card>
   );
 }
+
+export default OutlinedCard;

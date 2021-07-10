@@ -2,7 +2,7 @@ import React from 'react'
 import BaseContainer from '../components/base-container';
 import { Box, Typography } from '@material-ui/core';
 
-function PrivacyPage() {
+const PrivacyPage: React.FC = () => {
   return <BaseContainer title='Privacy'>
       <Box mt={4} mb={4}>
         <Typography variant='h4'>
@@ -202,7 +202,6 @@ function PrivacyPage() {
           A.	It is the policy of the NUS Students’ Computing Club to comply with all Singapore non-discrimination laws and the relevant Singapore government policies. This non-discrimination policy applies to admissions, employment, access to and treatment in the NUS Students’ Computing Club programs and activities. Complaints of invidious discrimination prohibited by NUS Students’ Computing Club policy are to be resolved within existing NUS Students’ Computing Club procedures.
         </Typography>
       </Box>
-
   </BaseContainer>;
 }
 

@@ -41,7 +41,7 @@ export default function WingContainer(props) {
         onFocus={e => setImage(props.image)}
         onMouseOver={e => setImage(props.imageFun)}
         onBlur={e => setImage(props.imageFun)}>
-        <GatsbyImage image={image} />
+        <GatsbyImage alt={props.name} image={image} />
       </div>
       <Box mt={4}>
         <Divider></Divider>

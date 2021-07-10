@@ -3,7 +3,7 @@ import BaseContainer from '../components/base-container'
 import { Box, Link, Typography, Divider, makeStyles, useTheme } from '@material-ui/core'
 import { Alert, AlertTitle } from '@material-ui/lab'
 import { Link as GatsbyLink, useStaticQuery, graphql } from 'gatsby'
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 
 const useStyles = makeStyles((theme) => ({
   rounded: {
@@ -26,31 +26,20 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function() {
+export default function Index() {
   function IndexPage() {
     const theme = useTheme();
     const classes = useStyles(theme);
-    const image = useStaticQuery(graphql`{
-  banner: file(relativePath: {eq: "banner.png"}) {
-    childImageSharp {
-      gatsbyImageData(layout: FULL_WIDTH)
-    }
-  }
-  fopBanner: file(relativePath: {eq: "fopbanner.jpg"}) {
-    childImageSharp {
-      gatsbyImageData(layout: FULL_WIDTH)
-    }
-  }
-}
-`);
     return (
       <div>
         <Box mb={8}>
           <Box mb={4}>
-            <Typography variant='h3'>Welcome to NUS Computing!</Typography>
+            <Typography variant='h3' color='textPrimary'>Welcome to NUS Computing!</Typography>
           </Box>
-          <GatsbyImage
-            image={getImage(image.banner)}
+          <StaticImage
+            alt="NUS Computing Banner"
+            src="../images/banner.png"
+            placeholder="blurred"
             className={classes.rounded}/>
           {/* <Typography variant='h6'>
             The <b>23rd Management Committee</b> is looking to recruit subcommittee
@@ -98,8 +87,10 @@ export default function() {
             <Typography color='primary' variant='h4'>Freshmen Orientation Camps</Typography>
             <Box mt={4} mb={4}>
               <a href='/freshmen'>
-                <GatsbyImage
-                  image={image.fopBanner.childImageSharp.gatsbyImageData}
+                <StaticImage
+                  alt="FOP banner"
+                  src="../images/fopbanner.jpg"
+                  placeholder="blurred"
                   className={classes.rounded} />
               </a>
             </Box>
@@ -150,7 +141,7 @@ export default function() {
             title="nuscomputing's instagram"
             src="https://cdn.lightwidget.com/widgets/2dc5ee7fb15559229812e0469d4f070c.html"
             scrolling="no"
-            allowtransparency="true"
+            allowTransparency={true}
             className={classes.instagramWidget}>
           </iframe>
         </Box>

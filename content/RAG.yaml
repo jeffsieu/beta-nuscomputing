@@ -16,7 +16,7 @@ committee:
     - title: Vice Project Director
       name: Ruth Kang
   subcommittee:
-    Creative Directors:
+    - name: Creative Directors
       members:
         # Title can be omitted - Then title will be taken as "Manpower Member", or rather "<name> Member"
         - title: Creative Director
@@ -25,7 +25,7 @@ committee:
           name: Erin Ong
         - title: Creative Director
           name: Ye Pei Lin
-    Publicity:
+    - name: Publicity
       members:
         # Title can be omitted - Then title will be taken as "Manpower Member", or rather "<name> Member"
         - title: Publicity Member
@@ -40,7 +40,7 @@ committee:
           name: Song Zhiqian
         - title: Publicity Member
           name: Leong Wen Ting
-    Floats:
+    - name: Floats
       members:
         # Title can be omitted - Then title will be taken as "Manpower Member", or rather "<name> Member"
         - title: Floats Engineer
@@ -55,7 +55,7 @@ committee:
           name: Harmon Chew
         - title: Floats Engineer
           name: Tamago
-    Dance:
+    - name: Dance
       members:
         # Title can be omitted - Then title will be taken as "Manpower Member", or rather "<name> Member"
         - title: Dance Choreographer
@@ -68,7 +68,7 @@ committee:
           name: Rebecca Lau
         - title: Dance Choreographer
           name: Yin Ruoyan
-    Makeup and Costumes:
+    - name: Makeup and Costumes
       members:
         # Title can be omitted - Then title will be taken as "Manpower Member", or rather "<name> Member"
         - title: Makeup & Costumes Designer
@@ -81,20 +81,14 @@ committee:
           name: Huang Ching
 gallery:
   - url: floats.jpg
-    caption:
-      Here, we construct props and floats from scratch for the backdrop of our performance.
+    caption: Here, we construct props and floats from scratch for the backdrop of our performance.
   - url: makeup.jpg
-    caption:
-      Get to paint or be painted in preparation for the performance!
+    caption: Get to paint or be painted in preparation for the performance!
   - url: costumes.jpg
-    caption:
-      Try your hand at designing vibrant and creative costumes!
+    caption: Try your hand at designing vibrant and creative costumes!
   - url: dance.jpg
-    caption:
-      This is your opportunity to unleash your potential - no prior experience is required! Step out of your comfort zone to train, learn, perform alongside your friends!
+    caption: This is your opportunity to unleash your potential - no prior experience is required! Step out of your comfort zone to train, learn, perform alongside your friends!
   - url: performance1.jpg
-    caption:
-      Join RAG to have one of the best experience of your NUS journey and make lasting memories together over the summer! 
+    caption: Join RAG to have one of the best experience of your NUS journey and make lasting memories together over the summer!
   - url: performance2.jpg
-    caption:
-      So what are you waiting for? If you are a freshmen or Year 2 looking to immerse yourself in a whole new experience, Sign up now to join COMRAG 2021! Let's embark on this journey together! 
+    caption: So what are you waiting for? If you are a freshmen or Year 2 looking to immerse yourself in a whole new experience, Sign up now to join COMRAG 2021! Let's embark on this journey together!

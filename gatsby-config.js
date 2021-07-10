@@ -6,6 +6,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-use-dark-mode`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -20,22 +21,36 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-transformer-yaml`,
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          quality: 100,
+          placeholder: `blurred`
+        }
+      }
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `NUS Computing Website`,
+        short_name: `NUS Computing`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#27378F`,
+        theme_color: `#27378F`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`,
       },
     },
-    `gatsby-transformer-yaml`,
+    {
+      resolve: `gatsby-transformer-yaml`,
+      options: {
+        typeName: `Yaml`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

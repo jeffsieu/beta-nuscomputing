@@ -3,7 +3,8 @@ import BaseContainer from '../components/base-container';
 import { Box, Card, CardContent, CardActionArea, CardMedia, Grid, Link, Typography, Chip } from '@material-ui/core';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import { graphql, useStaticQuery } from 'gatsby';
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image";
+import * as GatsbyTypes from '../types/gatsby-types';
 
 const sports = [
   {
@@ -69,46 +70,53 @@ const sports = [
   }
 ];
 
-function IfgRecruitmentPage() {
-  const { games, banner } = useStaticQuery(graphql`{
-    games: allFile(
-      filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, relativePath: {regex: "/ifg/"}}
-    ) {
-      edges {
-        node {
-          name
-          childImageSharp {
-            gatsbyImageData(
-              quality: 100
-              aspectRatio: 2
-              placeholder: BLURRED
-              layout: FULL_WIDTH
-            )
+
+type GameNode = {
+  name: string,
+  childImageSharp: GatsbyTypes.Maybe<Pick<GatsbyTypes.ImageSharp, "gatsbyImageData">>,
+} & ImageDataLike;
+
+export default function IfgRecruitmentPage() {
+  const { games, banner } = useStaticQuery<GatsbyTypes.GamesQuery>(graphql`
+    query Games {
+      games: allFile(
+        filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, relativePath: {regex: "/ifg/"}}
+      ) {
+        edges {
+          node {
+            name
+            childImageSharp {
+              gatsbyImageData(
+                aspectRatio: 2
+                layout: FULL_WIDTH
+              )
+            }
+          }
+        }
+      }
+      banner: allFile(
+        filter: {relativePath: {regex: "/ifg/banner.jpg/"}}
+      ) {
+        edges {
+          node {
+            childImageSharp {
+              gatsbyImageData(
+                layout: FULL_WIDTH
+              )
+            }
           }
         }
       }
     }
-    banner: allFile(
-      filter: {relativePath: {regex: "/ifg/banner.jpg/"}}
-    ) {
-      edges {
-        node {
-          childImageSharp {
-            gatsbyImageData(
-              layout: FULL_WIDTH
-            )
-          }
-        }
-      }
-    }
-  }`);
-  const nodes = games.edges.map((edge) => edge.node);
-  const images = nodes.reduce(function (map, node) {
-    map[node.name] = node;
+  `);
+
+  const gameNodes = games.edges.map((edge) => edge.node);
+  const images = gameNodes.reduce(function (map, node) {
+    map.set(node.name, node as GameNode);
     return map;
-  }, {});
+  }, new Map<string, GameNode>());
   return (
-    <BaseContainer title='IFG Recruitment' background={banner.edges[0].node} backgroundPosition="50% 25%">
+    <BaseContainer title='IFG Recruitment' background={getImage(banner.edges[0].node as ImageDataLike)!} backgroundPosition="50% 25%">
       <Box mt={4} mb={4}>
         <Typography variant='h3' gutterBottom>
           NUS Inter-Faculty Games Recruitment
@@ -138,7 +146,7 @@ function IfgRecruitmentPage() {
                 {category.name}
                 {
                   category.new &&
-                  <Box ml={2} style={{ display: 'inline' }}>
+                  <Box ml={2} display='inline'>
                     <Chip label="New" color="secondary" />
                   </Box>
                 }
@@ -161,7 +169,7 @@ function IfgRecruitmentPage() {
                           variant='outlined' style={{ borderRadius: '8px' }}>
                           <CardActionArea>
                             <CardMedia>
-                              <GatsbyImage image={getImage(images[game.image])} aspectRatio={3} />
+                              <GatsbyImage alt={game.name} image={getImage(images.get(game.image)!)!} />
                             </CardMedia>
                             <CardContent>
                               <Typography variant="overline" color="primary">
@@ -187,5 +195,3 @@ function IfgRecruitmentPage() {
     </BaseContainer>
   );
 }
-
-export default IfgRecruitmentPage;

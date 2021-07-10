@@ -22,7 +22,7 @@ committee:
     - title: Vice Project Director (Admin)
       name: Kaushik Rangaraj
   subcommittee:
-    Manpower:
+    - name: Manpower
       head:
         title: Head of Manpower & Finance
         name: Chiu Xi, Brandon
@@ -30,12 +30,12 @@ committee:
         - name: Nobel Ang
         - name: Michelle Adeline
         - name: Phua Guan Wei
-    Publicity:
+    - name: Publicity
       members:
         - name: Chu Jia Ming
         - name: Lee Jing Yu, Jonathan
         - name: Ren Weilin
-    Programmes:
+    - name: Programmes
       head:
         title: Head of Programmes
         name: Rishabh Anand
@@ -51,7 +51,7 @@ committee:
         - name: Chan Tse Ee
         - name: Megan Wee Rui En
         - name: Brendan Lim Yuen Chong
-    Logistics:
+    - name: Logistics
       head:
         title: Head of Logistics
         name: Xiong Jingya
@@ -61,18 +61,14 @@ committee:
         - name: Koh Tze Kang
 gallery:
   - url: littest.jpg
-    caption:
-      Come join us in the LITTEST camp of SOC!!!
+    caption: Come join us in the LITTEST camp of SOC!!!
   - url: amazingrace.jpg
-    caption:
-      Travel across and outside NUS as you journey to save BigTech!
+    caption: Travel across and outside NUS as you journey to save BigTech!
   - url: activities.jpg
-    caption:
-      Take part in activities while making new friends!
+    caption: Take part in activities while making new friends!
   - url: friendships.jpg
     caption:
       At the end of the camp, friendships are forged not only within the orientation groups
       and house but also beyond!
   - url: celebration.jpg
-    caption:
-      What are you waiting for? Join us now!
+    caption: What are you waiting for? Join us now!

@@ -3,7 +3,7 @@ import { Avatar, Box, Button, Divider, Grid, Hidden, Typography } from '@materia
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import { makeStyles } from '@material-ui/core/styles';
 import { navigate } from 'gatsby';
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import SignUpButton from './sign-up-button'
 
 const useStyles = makeStyles((theme) => ({
@@ -93,7 +93,7 @@ const RecruitmentDetails = (props) => {
           <Spacer/>
             {props.team.people.map((person, index) =>
               <Box key={index} display="flex" m="auto" flexDirection="column" justify='center' alignItems='center' ml={index === 0 ? 0 : 4}>
-                <Avatar className={classes.large} alt={person.name} component={GatsbyImage} fluid={props.team.query[person.name.replace(/ /g, '')].childImageSharp.gatsbyImageData}/>
+                <Avatar className={classes.large} alt={person.name} component={GatsbyImage} image={getImage(props.team.query[person.name.replace(/ /g, '')])}/>
                 <Box mt={1}>
                   <Typography variant='h6'>{person.name}</Typography>
                 </Box>
@@ -108,7 +108,7 @@ const RecruitmentDetails = (props) => {
           {props.team.people.map((person, index) =>
             <Grid item xs={6} key={index}>
               <Box mt={4} style={{ display: 'flex', flexDirection: 'column'}}  justifyContent='center' alignItems='center' >
-                <Avatar className={classes.large} alt={person.name} component={GatsbyImage} fluid={props.team.query[person.name.replace(/ /g, '')].childImageSharp.gatsbyImageData} />
+                <Avatar className={classes.large} alt={person.name} component={GatsbyImage} image={getImage(props.team.query[person.name.replace(/ /g, '')])} />
                 <Box mt={1}>
                   <Typography variant='h6'>{person.name}</Typography>
                 </Box>
