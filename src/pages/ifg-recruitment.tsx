@@ -63,7 +63,7 @@ const sports = [
       },
       {
         "name": "League of Legends",
-        "link": "https://t.me/joinchat/JCpCOxlhK4Q2YWQ1",
+        "link": "https://t.me/joinchat/AWTeiBfVH6MzOTc1",
         "image": "league-of-legends"
       }
     ]
