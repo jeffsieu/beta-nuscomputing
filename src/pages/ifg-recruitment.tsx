@@ -122,10 +122,14 @@ export default function IfgRecruitmentPage() {
           NUS Inter-Faculty Games Recruitment
         </Typography>
         <Box mb={4}>
-          <Alert severity="success">
+          <Alert severity="error">
+            <AlertTitle><strong>COVID update: IFG Recruitment halted</strong></AlertTitle>
+            IFG recruitment has been halted due to COVID 19. Further information will be provided at a later date.
+          </Alert>
+          {/* <Alert severity="success">
             <AlertTitle><strong>Player Recruitment for IFG 2021 is now open!</strong></AlertTitle>
             Join the respective Telegram groups to represent SoC at this year's IFG and engage in friendly competition with students from all faculties and Yale-NUS College.
-          </Alert>
+          </Alert> */}
         </Box>
         <Typography variant='h6' gutterBottom>
           The NUS Inter-Faculty Games is an annual schoolwide sporting event organised by the NUS Students' Sports Club.
@@ -167,7 +171,7 @@ export default function IfgRecruitmentPage() {
                       <a href={game.link} target="blank" rel="noopener" style={{ textDecoration: 'none' }}>
                         <Card
                           variant='outlined' style={{ borderRadius: '8px' }}>
-                          <CardActionArea>
+                          <CardActionArea disabled>
                             <CardMedia>
                               <GatsbyImage alt={game.name} image={getImage(images.get(game.image)!)!} />
                             </CardMedia>
