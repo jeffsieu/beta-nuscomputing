@@ -70,6 +70,10 @@ export default function Index() {
               Learn more
             </Button>
           </Typography> */}
+          <Alert severity="warning">
+            <AlertTitle><strong>IFG Cancelled</strong></AlertTitle>
+            Sadly, IFG recruitment has been halted as IFG has been cancelled.
+          </Alert>
         </Box>
         <Divider/>
         <Box mt={8}>
