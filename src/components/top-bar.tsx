@@ -119,11 +119,6 @@ const navigationLinks: NavigationLink[] = [
     highlight: true,
   },
   {
-    title: 'IFG',
-    link: '/ifg-recruitment',
-    highlight: true,
-  },
-  {
     title: 'Photos/Media',
     link: 'https://www.flickr.com/photos/137141057@N04/albums/',
     newTab: true,
