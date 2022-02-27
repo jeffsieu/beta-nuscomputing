@@ -1,0 +1,2 @@
+(self.webpackChunknus_computing=self.webpackChunknus_computing||[]).push([[646],{5738:function(e,n,t){"use strict";t.r(n),t.d(n,{default:function(){return l}});var u=t(7294),r=t(9327),a=t(7760),c=t(5444),i=t(6802);function l(){var e=(0,c.useStaticQuery)("263624733").allFile.edges[0].node;return u.createElement(a.Z,{title:"Freshmen Orientation Camps",background:(0,i.d)(e)},u.createElement(r.Z,null))}}}]);
+//# sourceMappingURL=component---src-pages-freshmen-tsx-cd7dd756c3d3cbebdebf.js.map
